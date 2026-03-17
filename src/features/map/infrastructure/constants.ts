@@ -15,4 +15,4 @@ export const DISTANCE_SLIDER_STEP_METERS = 100;
  * Over-zoom settings for poster workflow:
  * render map at higher internal zoom and compensate viewport scale to preserve framing.
  */
-export const MAP_OVERZOOM_SCALE = 4;
+export const MAP_OVERZOOM_SCALE = 5.5;
