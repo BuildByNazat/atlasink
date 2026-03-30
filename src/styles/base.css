@@ -20,10 +20,10 @@
   --positive: var(--success);
   --negative: var(--error);
 
-  --command-bar-height: 64px;
-  --sidebar-width: 400px;
+  --command-bar-height: 56px;
+  --sidebar-width: 360px;
   --sidebar-collapsed-width: 76px;
-  --sidebar-nav-width: 76px;
+  --sidebar-nav-width: 68px;
 
   --surface-1: #111216;
   --surface-2: #171a20;

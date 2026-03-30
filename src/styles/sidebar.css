@@ -8,13 +8,13 @@
 
 .shell-settings__body {
   display: grid;
-  gap: 20px;
+  gap: 16px;
 }
 
 .shell-section,
 .shell-subsection {
   display: grid;
-  gap: 16px;
+  gap: 12px;
 }
 
 .shell-section__intro,
@@ -25,27 +25,28 @@
 
 .shell-section__intro {
   margin: 0;
-  padding: 14px 16px;
+  padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.03);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
   color: rgba(224, 228, 235, 0.82);
-  line-height: 1.55;
+  line-height: 1.5;
+  font-size: 0.9rem;
 }
 
 .shell-subsection__eyebrow {
   margin: 0;
   font-family: "Spline Sans Mono", monospace;
-  font-size: 0.64rem;
-  letter-spacing: 0.14em;
+  font-size: 0.61rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(166, 173, 186, 0.82);
 }
 
 .shell-subsection__title {
   margin: 0;
-  font-size: 0.98rem;
-  line-height: 1.35;
+  font-size: 0.92rem;
+  line-height: 1.3;
   color: #f4efe7;
 }
 
@@ -55,7 +56,7 @@
     display: flex;
     width: var(--sidebar-width);
     min-width: 0;
-    background: rgba(15, 16, 21, 0.92);
+    background: rgba(15, 16, 21, 0.94);
     border-right: 1px solid rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -75,7 +76,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 0 16px;
+    padding: 14px 0;
     border-right: 1px solid rgba(255, 255, 255, 0.06);
     background: rgba(255, 255, 255, 0.02);
   }
@@ -92,37 +93,37 @@
   }
 
   .sidebar-nav-group {
-    gap: 8px;
+    gap: 6px;
   }
 
   .sidebar-nav-footer {
-    gap: 10px;
+    gap: 8px;
   }
 
   .sidebar-rail-badge {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
     font-family: "Spline Sans Mono", monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.16em;
+    font-size: 0.55rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(209, 167, 100, 0.76);
   }
 
   .sidebar-nav-tab {
     position: relative;
-    width: 58px;
-    min-height: 64px;
-    padding: 8px 4px;
+    width: 52px;
+    min-height: 56px;
+    padding: 7px 4px;
     border: 1px solid transparent;
-    border-radius: 18px;
+    border-radius: 16px;
     background: transparent;
     color: rgba(180, 186, 196, 0.74);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 5px;
     cursor: pointer;
     transition:
       background 0.16s ease,
@@ -155,7 +156,7 @@
     top: 50%;
     transform: translateY(-50%) scaleY(0);
     width: 3px;
-    height: 26px;
+    height: 22px;
     border-radius: 0 999px 999px 0;
     background: var(--accent);
     transition: transform 0.18s ease;
@@ -166,8 +167,8 @@
   }
 
   .sidebar-nav-icon {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     flex-shrink: 0;
   }
 
@@ -186,8 +187,8 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 18px;
-    padding: 24px 20px 24px;
+    gap: 14px;
+    padding: 18px 16px 20px;
     overflow-y: auto;
     scrollbar-width: none;
     background:
@@ -210,16 +211,16 @@
 
   .sidebar-panel-head {
     display: grid;
-    gap: 8px;
-    padding-bottom: 18px;
+    gap: 6px;
+    padding-bottom: 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .sidebar-panel-kicker {
     margin: 0;
     font-family: "Spline Sans Mono", monospace;
-    font-size: 0.64rem;
-    letter-spacing: 0.16em;
+    font-size: 0.58rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(166, 173, 186, 0.78);
   }
@@ -227,29 +228,30 @@
   .sidebar-panel-title {
     margin: 0;
     font-family: "Bebas Neue", sans-serif;
-    font-size: 2rem;
+    font-size: 1.52rem;
     line-height: 0.92;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     color: #f4efe7;
   }
 
   .sidebar-panel-copy {
     margin: 0;
     color: rgba(224, 228, 235, 0.8);
-    line-height: 1.55;
+    font-size: 0.84rem;
+    line-height: 1.45;
   }
 
   .shell-settings--desktop .shell-subsection,
   .shell-settings--desktop .shell-section--place {
-    padding: 18px;
+    padding: 14px;
     border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 20px;
-    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.025);
   }
 
   .shell-settings--desktop .panel-block {
     display: grid;
-    gap: 14px;
+    gap: 10px;
   }
 
   .shell-settings--desktop .panel-block > h2,
