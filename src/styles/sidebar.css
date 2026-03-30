@@ -111,16 +111,18 @@
 
   .sidebar-nav-tab {
     position: relative;
-    width: 52px;
-    min-height: 52px;
-    padding: 0;
+    width: 58px;
+    min-height: 64px;
+    padding: 8px 4px;
     border: 1px solid transparent;
     border-radius: 18px;
     background: transparent;
     color: rgba(180, 186, 196, 0.74);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 6px;
     cursor: pointer;
     transition:
       background 0.16s ease,
@@ -165,7 +167,13 @@
   }
 
   .sidebar-nav-label {
-    display: none;
+    display: block;
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1;
+    white-space: nowrap;
   }
 
   .sidebar-panel-container {
