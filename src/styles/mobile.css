@@ -797,25 +797,6 @@
     display: none;
   }
 
-  /* Accordion: hide headers on mobile (tabs handle navigation) */
-  .accordion-header {
-    display: none;
-  }
-
-  /* Always expand accordion bodies on mobile */
-  .accordion-body {
-    grid-template-rows: 1fr;
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .accordion-body-inner {
-    padding: 0;
-  }
-
-  .accordion-item {
-    border-bottom: none;
-  }
 
   /* ────────────────────────────────────
      Shell layout
@@ -831,101 +812,7 @@
     padding-top: env(safe-area-inset-top, 0px);
   }
 
-  /* ────────────────────────────────────
-     Header: condensed — title + kicker
-     always visible, longer copy hidden
-     ──────────────────────────────────── */
 
-  .general-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 14px 8px;
-    margin-bottom: 0;
-    position: relative;
-    z-index: 35;
-    background: rgba(9, 16, 24, 0.97);
-    border-bottom: 1px solid rgba(146, 176, 200, 0.12);
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.28);
-  }
-
-  .general-header .desktop-brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    min-width: 0;
-  }
-
-  .general-header .desktop-brand-logo {
-    width: 34px;
-    height: auto;
-  }
-
-  .general-header .desktop-brand-copy {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-    min-width: 0;
-  }
-
-  .general-header .desktop-brand-title {
-    margin: 0;
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 1.56rem;
-    line-height: 0.95;
-    letter-spacing: 0.03em;
-    color: #ecf5ff;
-  }
-
-  .general-header .desktop-brand-kicker {
-    margin: 0;
-    font-family: "Spline Sans Mono", monospace;
-    font-size: 0.56rem;
-    text-transform: uppercase;
-    letter-spacing: 0.13em;
-    color: rgba(184, 212, 232, 0.66);
-  }
-
-  .general-header-actions {
-    margin-left: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-  }
-
-  .desktop-header-social {
-    display: none;
-  }
-
-  .general-header-text-btn {
-    width: 34px;
-    height: 34px;
-    padding: 0;
-    border: 1px solid rgba(146, 176, 200, 0.2);
-    border-radius: 9px;
-    background: rgba(10, 20, 31, 0.78);
-    color: rgba(195, 220, 240, 0.86);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .general-header-btn-label {
-    display: none;
-  }
-
-  .general-header-btn-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .general-header-btn-icon svg {
-    width: 16px;
-    height: 16px;
-  }
 
   .install-help-modal {
     width: min(360px, calc(100vw - 24px));

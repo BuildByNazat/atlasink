@@ -180,25 +180,7 @@
     min-width: unset;
   }
 
-  .sidebar-panel-container .accordion-item {
-    border-bottom: none;
-    background: transparent;
-  }
-
-  .sidebar-panel-container .accordion-header {
-    display: none;
-  }
-
-  .sidebar-panel-container .accordion-body {
-    display: block !important;
-    grid-template-rows: none !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    overflow: visible !important;
-    transition: none !important;
-  }
-
-  .sidebar-panel-container .accordion-body-inner {
+  .sidebar-panel-container .section-body-inner {
     padding: 16px 12px;
     overflow: visible;
   }

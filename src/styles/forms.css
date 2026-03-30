@@ -621,12 +621,12 @@ button.location-current-btn:focus-visible {
   margin-bottom: 0;
 }
 
-.mobile-section--theme-settings .accordion-body-inner {
+.mobile-section--theme-settings .section-body-inner {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-.mobile-section--theme-settings .accordion-body-inner::-webkit-scrollbar {
+.mobile-section--theme-settings .section-body-inner::-webkit-scrollbar {
   display: none;
 }
 

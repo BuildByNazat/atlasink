@@ -233,109 +233,35 @@ pre.install-help-modal-text {
   overflow: hidden;
 }
 
-/* ── Accordion ── */
-
-.accordion-item {
+/* ── Panel Section Framing ── */
+.mobile-section {
+  display: block;
   border-bottom: 1px solid var(--line);
-  background: var(--surface-2);
+  padding: 16px 0;
+  animation: mobile-section-fadein 0.18s ease;
 }
 
-.accordion-item:last-child {
+.mobile-section:last-child {
   border-bottom: none;
 }
 
-.accordion-item.accordion-item--open {
-  background: var(--surface-2);
-}
-
-.accordion-header {
-  width: 100%;
+.section-body-inner {
+  padding: 0 16px;
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 20px 16px;
-  background: transparent;
-  border: none;
-  color: var(--text-main);
-  font-family: "Spline Sans Mono", monospace;
-  font-size: 0.78rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  transition:
-    color 0.18s ease,
-    background 0.18s ease;
-  -webkit-tap-highlight-color: transparent;
-  background: var(--surface-2);
+  flex-direction: column;
+  gap: 16px;
 }
 
-.accordion-header:hover {
-  color: var(--text-main);
-  background: var(--surface-3);
+@keyframes mobile-section-fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.accordion-header.is-open {
-  color: var(--accent);
-}
-
-.accordion-icon {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  color: #88b7d5;
-}
-
-.accordion-label {
-  flex: 1;
-  text-align: left;
-}
-
-.accordion-chevron {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  opacity: 0.6;
-  transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.accordion-header.is-open .accordion-chevron {
-  transform: rotate(180deg);
-  opacity: 0.9;
-}
-
-/* Collapse/expand via CSS grid trick — animates without knowing height */
-.accordion-body {
-  display: grid;
-  grid-template-rows: 0fr;
-  background: var(--surface-2);
-  overflow: hidden;
-  opacity: 0;
-  visibility: hidden;
-  transition: grid-template-rows 0.26s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.accordion-body.is-open {
-  grid-template-rows: 1fr;
-  opacity: 1;
-  visibility: visible;
-}
-
-.accordion-body-inner {
-  min-height: 0;
-  overflow: hidden;
-  padding: 0 14px 0;
-}
-
-.accordion-body.is-open .accordion-body-inner {
-  padding-bottom: 14px;
-}
-
-/* Hide section h2 titles on desktop — accordion headers already show them */
+/* Hide section h2 titles on desktop — Sidebar navigation tabs already imply the active section */
 @media (min-width: 769px) {
-  .accordion-body-inner > .panel-block > h2,
-  .accordion-body-inner .map-settings-theme-part > h2,
-  .accordion-body-inner .map-settings-layout-part > h2 {
+  .section-body-inner > .panel-block > h2,
+  .section-body-inner .map-settings-theme-part > h2,
+  .section-body-inner .map-settings-layout-part > h2 {
     display: none;
   }
 }
