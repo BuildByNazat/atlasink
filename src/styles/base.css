@@ -1,12 +1,38 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap");
 
 :root {
+  /* ── Existing colour tokens ── */
   --ink: #e6edf4;
   --panel: rgba(10, 20, 31, 0.92);
   --line: rgba(146, 176, 200, 0.24);
   --strong-line: rgba(166, 199, 223, 0.45);
   --positive: #6bd8a0;
   --negative: #ff8372;
+
+  /* ── Layout dimensions ── */
+  --command-bar-height: 52px;
+  --sidebar-width: 220px;
+  --sidebar-collapsed-width: 52px;
+  --sidebar-nav-width: 52px;       /* icon-only rail within the sidebar */
+
+  /* ── Layered surface backgrounds ── */
+  /* surface-1: deepest — app chrome, command bar, sidebar rail */
+  --surface-1: rgba(9, 16, 24, 0.97);
+  /* surface-2: mid — panel cards, settings slides */
+  --surface-2: rgba(11, 20, 30, 0.98);
+  /* surface-3: top — inputs, dropdowns, floating pills */
+  --surface-3: rgba(20, 36, 52, 0.97);
+
+  /* ── Border radii scale ── */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+
+  /* ── Brand accent (sidebar active state, focus rings) ── */
+  --accent: #4bb8d8;
+  --accent-dim: rgba(75, 184, 216, 0.16);
+  --accent-border: rgba(75, 184, 216, 0.45);
 }
 
 *,
