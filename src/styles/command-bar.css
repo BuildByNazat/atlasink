@@ -2,9 +2,9 @@
   grid-area: dheader;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   height: var(--command-bar-height, 64px);
-  padding: 0 18px 0 20px;
+  padding: 0 14px 0 16px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent),
     rgba(10, 11, 14, 0.88);
@@ -21,15 +21,15 @@
   grid-template-areas:
     "logo wordmark"
     "logo kicker";
-  column-gap: 10px;
+  column-gap: 9px;
   row-gap: 1px;
   flex: 0 0 auto;
-  min-width: 176px;
+  min-width: 158px;
 }
 
 .command-bar-logo {
   grid-area: logo;
-  width: 22px;
+  width: 20px;
   height: auto;
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
 }
@@ -38,7 +38,7 @@
   grid-area: wordmark;
   margin: 0;
   font-family: "Bebas Neue", sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.26rem;
   line-height: 0.92;
   letter-spacing: 0.045em;
   color: #f5efe5;
@@ -48,7 +48,7 @@
   grid-area: kicker;
   margin: 0;
   font-family: "Spline Sans Mono", monospace;
-  font-size: 0.58rem;
+  font-size: 0.54rem;
   line-height: 1;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -56,16 +56,17 @@
 }
 
 .command-bar-center {
-  flex: 1 1 auto;
+  flex: 1 1 380px;
   min-width: 0;
   display: none;
+  max-width: 400px;
 }
 
 .command-bar-actions {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 6px;
   flex: 0 0 auto;
 }
 
@@ -73,9 +74,9 @@
   display: none;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  min-height: 38px;
-  padding: 0 15px;
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 13px;
   border: 1px solid rgba(239, 223, 195, 0.28);
   border-radius: 999px;
   background:
@@ -83,7 +84,7 @@
     rgba(243, 236, 226, 0.95);
   color: #1d1915;
   font-family: "Spline Sans Mono", monospace;
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.075em;
@@ -115,8 +116,8 @@
 }
 
 .command-export-btn-icon {
-  width: 13px;
-  height: 13px;
+  width: 12px;
+  height: 12px;
   flex-shrink: 0;
 }
 
@@ -125,8 +126,8 @@
 }
 
 .command-icon-btn {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.02);
@@ -142,8 +143,8 @@
 }
 
 .command-icon-btn svg {
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
 }
 
 .command-icon-btn:hover {
@@ -186,12 +187,12 @@
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
 }
 
 .place-composer__search-icon {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   color: rgba(162, 169, 181, 0.72);
   display: inline-flex;
   align-items: center;
@@ -199,9 +200,9 @@
 }
 
 .place-composer__icon-btn {
-  width: 36px;
-  min-width: 36px;
-  min-height: 36px;
+  width: 32px;
+  min-width: 32px;
+  min-height: 32px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.03);
@@ -236,27 +237,27 @@
 }
 
 .place-composer--masthead {
-  max-width: 470px;
+  max-width: 380px;
 }
 
 .place-composer--masthead .place-composer__search-row {
-  min-height: 38px;
-  padding: 4px 6px 4px 10px;
+  min-height: 34px;
+  padding: 3px 5px 3px 9px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.025);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.022);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .place-composer--masthead .location-input-wrap input {
-  min-height: 32px;
+  min-height: 28px;
   margin-top: 0;
-  padding: 5px 28px 5px 0;
+  padding: 4px 24px 4px 0;
   border: none;
   background: transparent;
   color: #f4efe7;
   font-family: "Spline Sans Mono", monospace;
-  font-size: 0.74rem;
+  font-size: 0.7rem;
   line-height: 1.2;
   box-shadow: none;
 }
@@ -268,8 +269,8 @@
 
 .place-composer--masthead .location-clear-btn {
   right: 2px;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.08);
 }

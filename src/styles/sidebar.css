@@ -8,13 +8,13 @@
 
 .shell-settings__body {
   display: grid;
-  gap: 16px;
+  gap: 14px;
 }
 
 .shell-section,
 .shell-subsection {
   display: grid;
-  gap: 12px;
+  gap: 10px;
 }
 
 .shell-section__intro,
@@ -25,19 +25,19 @@
 
 .shell-section__intro {
   margin: 0;
-  padding: 12px 14px;
+  padding: 10px 12px;
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 14px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.025);
   color: rgba(224, 228, 235, 0.82);
-  line-height: 1.5;
-  font-size: 0.9rem;
+  line-height: 1.45;
+  font-size: 0.84rem;
 }
 
 .shell-subsection__eyebrow {
   margin: 0;
   font-family: "Spline Sans Mono", monospace;
-  font-size: 0.61rem;
+  font-size: 0.58rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(166, 173, 186, 0.82);
@@ -45,7 +45,7 @@
 
 .shell-subsection__title {
   margin: 0;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   line-height: 1.3;
   color: #f4efe7;
 }
@@ -76,7 +76,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 0;
+    padding: 12px 0;
     border-right: 1px solid rgba(255, 255, 255, 0.06);
     background: rgba(255, 255, 255, 0.02);
   }
@@ -93,11 +93,11 @@
   }
 
   .sidebar-nav-group {
-    gap: 6px;
+    gap: 5px;
   }
 
   .sidebar-nav-footer {
-    gap: 8px;
+    gap: 6px;
   }
 
   .sidebar-rail-badge {
@@ -112,18 +112,18 @@
 
   .sidebar-nav-tab {
     position: relative;
-    width: 52px;
-    min-height: 56px;
-    padding: 7px 4px;
+    width: 48px;
+    min-height: 52px;
+    padding: 6px 3px;
     border: 1px solid transparent;
-    border-radius: 16px;
+    border-radius: 14px;
     background: transparent;
     color: rgba(180, 186, 196, 0.74);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 4px;
     cursor: pointer;
     transition:
       background 0.16s ease,
@@ -156,7 +156,7 @@
     top: 50%;
     transform: translateY(-50%) scaleY(0);
     width: 3px;
-    height: 22px;
+    height: 18px;
     border-radius: 0 999px 999px 0;
     background: var(--accent);
     transition: transform 0.18s ease;
@@ -167,8 +167,8 @@
   }
 
   .sidebar-nav-icon {
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
     flex-shrink: 0;
   }
 
@@ -187,8 +187,8 @@
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    padding: 18px 16px 20px;
+    gap: 12px;
+    padding: 14px 12px 16px;
     overflow-y: auto;
     scrollbar-width: none;
     background:
@@ -211,15 +211,15 @@
 
   .sidebar-panel-head {
     display: grid;
-    gap: 6px;
-    padding-bottom: 12px;
+    gap: 5px;
+    padding-bottom: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   .sidebar-panel-kicker {
     margin: 0;
     font-family: "Spline Sans Mono", monospace;
-    font-size: 0.58rem;
+    font-size: 0.54rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: rgba(166, 173, 186, 0.78);
@@ -228,7 +228,7 @@
   .sidebar-panel-title {
     margin: 0;
     font-family: "Bebas Neue", sans-serif;
-    font-size: 1.52rem;
+    font-size: 1.34rem;
     line-height: 0.92;
     letter-spacing: 0.04em;
     color: #f4efe7;
@@ -237,21 +237,44 @@
   .sidebar-panel-copy {
     margin: 0;
     color: rgba(224, 228, 235, 0.8);
-    font-size: 0.84rem;
-    line-height: 1.45;
+    font-size: 0.78rem;
+    line-height: 1.38;
   }
 
   .shell-settings--desktop .shell-subsection,
   .shell-settings--desktop .shell-section--place {
-    padding: 14px;
+    padding: 12px;
     border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 16px;
+    border-radius: 14px;
     background: rgba(255, 255, 255, 0.025);
   }
 
   .shell-settings--desktop .panel-block {
     display: grid;
-    gap: 10px;
+    gap: 8px;
+  }
+
+  .shell-settings--desktop label {
+    margin-bottom: 6px;
+    font-size: 0.78rem;
+  }
+
+  .shell-settings--desktop .form-control-tall,
+  .shell-settings--desktop .map-dimension-input,
+  .shell-settings--desktop .distance-slider-input {
+    min-height: 40px;
+    padding: 9px 10px;
+  }
+
+  .shell-settings--desktop .field-grid,
+  .shell-settings--desktop .map-size-fields-row,
+  .shell-settings--desktop .map-dimension-fields {
+    gap: 7px;
+  }
+
+  .shell-settings--desktop .toggle-field {
+    margin-bottom: 6px;
+    gap: 8px;
   }
 
   .shell-settings--desktop .panel-block > h2,
