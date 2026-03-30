@@ -111,7 +111,7 @@ export default function MobileExportFab({
             onClick={(event) => event.stopPropagation()}
           >
             <div className="mobile-export-modal-header">
-              <h3 id="mobile-export-modal-title">Export Studio Print</h3>
+              <h3 id="mobile-export-modal-title">Print Export</h3>
               <button
                 type="button"
                 className="mobile-export-modal-close"
@@ -163,7 +163,7 @@ export default function MobileExportFab({
               </button>
             </div>
             <p className="mobile-export-support-label">
-              Made with AtlasInk
+              AtlasInk
             </p>
             <SocialLinkGroup variant="mobile-export" />
           </div>

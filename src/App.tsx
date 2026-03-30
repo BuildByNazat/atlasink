@@ -38,7 +38,12 @@ function SettingsDrawer({
   });
 
   return (
-    <div className="mobile-drawer" role="dialog" aria-label="Active task">
+    <div
+      className="mobile-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Active task"
+    >
       <div
         className="mobile-drawer-backdrop"
         onClick={onClose}

@@ -1,7 +1,6 @@
 import {
   LocationIcon,
   ThemeIcon,
-  MarkersIcon,
   DownloadIcon,
   StyleIcon,
 } from "./Icons";
@@ -35,8 +34,7 @@ export default function MobileNavBar({
       <nav className="mobile-nav" aria-label="Mobile navigation">
         <div className="mobile-nav-tabs">
           {tabs.map(({ id, label, Icon }) => {
-            const isActive =
-              id === "export" ? activeStep === id : drawerOpen && activeStep === id;
+            const isActive = activeStep === id;
             return (
               <button
                 key={id}
@@ -44,6 +42,7 @@ export default function MobileNavBar({
                 className={`mobile-nav-tab${isActive ? " is-active" : ""}`}
                 onClick={() => onStepChange(id)}
                 aria-current={activeStep === id ? "page" : undefined}
+                aria-expanded={id === "export" ? undefined : drawerOpen && activeStep === id}
               >
                 <Icon className="mobile-nav-icon" />
                 <span className="mobile-nav-label">{label}</span>
