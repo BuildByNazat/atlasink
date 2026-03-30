@@ -26,10 +26,10 @@ export default function ThemeColorEditor({
 }: ThemeColorEditorProps) {
   return (
     <section className="panel-block color-editor-screen">
-      <h2>Color Editor</h2>
+      <h2>Signature Style Editor</h2>
 
       <div className="color-editor-header">
-        <p className="theme-active-label">Editing: {activeColorLabel}</p>
+        <p className="theme-active-label">Refining: {activeColorLabel}</p>
         <div className="theme-edit-actions">
           <button
             type="button"
@@ -37,14 +37,14 @@ export default function ThemeColorEditor({
             onClick={onResetAllColors}
             disabled={!hasCustomColors}
           >
-            Reset All Colors
+            Revert to Original
           </button>
           <button
             type="button"
             className="theme-edit-done-btn"
             onClick={onDone}
           >
-            Done
+            Save Style
           </button>
         </div>
       </div>

@@ -18,9 +18,9 @@ export default function LayersSection({
 }: LayersSectionProps) {
   return (
     <section className="panel-block">
-      <p className="section-summary-label">LAYERS</p>
+      <p className="section-summary-label">TERRAIN LAYERS</p>
       <label className="toggle-field">
-        <span>Show buildings</span>
+        <span>Buildings</span>
         <span className="theme-switch">
           <input
             type="checkbox"
@@ -32,7 +32,7 @@ export default function LayersSection({
         </span>
       </label>
       <label className="toggle-field">
-        <span>Show water</span>
+        <span>Water bodies</span>
         <span className="theme-switch">
           <input
             type="checkbox"
@@ -44,7 +44,7 @@ export default function LayersSection({
         </span>
       </label>
       <label className="toggle-field">
-        <span>Show parks</span>
+        <span>Parks &amp; greenery</span>
         <span className="theme-switch">
           <input
             type="checkbox"
@@ -56,7 +56,7 @@ export default function LayersSection({
         </span>
       </label>
       <label className="toggle-field">
-        <span>Show roads</span>
+        <span>Roads</span>
         <span className="theme-switch">
           <input
             type="checkbox"
@@ -68,7 +68,7 @@ export default function LayersSection({
         </span>
       </label>
       <label className="toggle-field">
-        <span>Show rail</span>
+        <span>Rail lines</span>
         <span className="theme-switch">
           <input
             type="checkbox"
@@ -80,7 +80,7 @@ export default function LayersSection({
         </span>
       </label>
       <label className="toggle-field">
-        <span>Show aeroway</span>
+        <span>Aeroways</span>
         <span className="theme-switch">
           <input
             type="checkbox"
@@ -93,7 +93,7 @@ export default function LayersSection({
       </label>
 
       <div className="map-details-section">
-        <h3 className="map-details-subtitle">Map Details</h3>
+        <h3 className="map-details-subtitle">Canvas Specifications</h3>
         <div className="map-details-card">
           <MapDimensionFields
             form={form}

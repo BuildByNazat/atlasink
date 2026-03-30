@@ -55,7 +55,7 @@ export default function MarkerPicker({
       !file.type.startsWith("image/") &&
       !file.name.toLowerCase().endsWith(".svg")
     ) {
-      setUploadError("Upload an image or SVG file.");
+      setUploadError("Please upload an image or SVG file.");
       return;
     }
 
@@ -65,13 +65,13 @@ export default function MarkerPicker({
     try {
       await onUploadIcon(file);
     } catch {
-      setUploadError("Could not upload marker.");
+      setUploadError("Upload failed. Please try again.");
     }
   };
 
   return (
     <div className="marker-picker">
-      <p className="marker-picker__section-title">Marker Icons</p>
+      <p className="marker-picker__section-title">Symbol Library</p>
       <div className="marker-picker__grid">
         {visibleAppIcons.map((icon) => (
           <button
@@ -92,19 +92,19 @@ export default function MarkerPicker({
             type="button"
             className="marker-picker__option marker-picker__option--toggle"
             onClick={() => setIsExpanded((prev) => !prev)}
-            aria-label={shouldShowAllIcons ? "Show icon list" : "Show more icons"}
+            aria-label={shouldShowAllIcons ? "Collapse symbols" : "Show all symbols"}
           >
             <span className="marker-picker__toggle-sign" aria-hidden="true">
               {shouldShowAllIcons ? "-" : "+"}
             </span>
             <span className="marker-picker__label">
-              {shouldShowAllIcons ? "Show less" : "More Icons"}
+              {shouldShowAllIcons ? "Collapse" : "Show all"}
             </span>
           </button>
         ) : null}
       </div>
 
-      <p className="marker-picker__section-title">Uploaded Markers</p>
+      <p className="marker-picker__section-title">Custom Symbols</p>
       <div className="marker-picker__grid marker-picker__grid--uploaded">
         {customIcons.map((icon) => (
           <button
@@ -132,8 +132,8 @@ export default function MarkerPicker({
                     onRemoveUploadedIcon(icon.id);
                   }
                 }}
-                aria-label={`Remove uploaded icon ${icon.label}`}
-                title="Remove uploaded icon"
+                aria-label={`Remove ${icon.label}`}
+                title="Remove symbol"
               >
                 x
               </span>
@@ -149,12 +149,12 @@ export default function MarkerPicker({
               type="button"
               className="marker-picker__option marker-picker__option--upload-tile"
               onClick={() => inputRef.current?.click()}
-              title="Upload marker"
+              title="Upload a custom symbol"
             >
               <span className="marker-picker__upload-plus" aria-hidden="true">
                 +
               </span>
-              <span className="marker-picker__label">Upload Marker</span>
+              <span className="marker-picker__label">Upload Symbol</span>
             </button>
             <input
               ref={inputRef}
@@ -174,7 +174,7 @@ export default function MarkerPicker({
             className="marker-picker__upload marker-picker__clear-uploaded"
             onClick={onClearUploadedIcons}
           >
-            Remove uploaded icons from storage
+            Clear custom symbols
           </button>
         ) : null}
       </div>

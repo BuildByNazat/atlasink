@@ -21,14 +21,14 @@ export default function ThemeSummarySection({
   onCustomize,
 }: ThemeSummarySectionProps) {
   const description =
-    selectedThemeOption.description?.trim() || "No description available.";
+    selectedThemeOption.description?.trim() || "A curated map palette for your composition.";
 
   return (
     <div className="theme-summary-view">
       <div className="theme-summary-head">
         <div className="theme-summary-copy">
           <p className="theme-summary-label">
-            Theme: <span className="theme-summary-label-name">{selectedThemeOption.name}</span>
+            Selected Style: <span className="theme-summary-label-name">{selectedThemeOption.name}</span>
           </p>
           <p className="theme-card-description">{description}</p>
         </div>
@@ -36,7 +36,7 @@ export default function ThemeSummarySection({
           type="button"
           className="theme-customize-btn"
           onClick={onCustomize}
-          aria-label={`Customize ${selectedThemeOption.name} colors`}
+          aria-label={`Personalize ${selectedThemeOption.name} Style`}
         >
           <span className="theme-customize-icon" aria-hidden="true">
             <EditIcon />
@@ -47,7 +47,7 @@ export default function ThemeSummarySection({
       <div
         className="theme-card-list card-scroll-list"
         role="list"
-        aria-label="Theme options"
+        aria-label="Style collection"
         ref={listRef}
       >
         {themeOptions.map((themeOption) => (

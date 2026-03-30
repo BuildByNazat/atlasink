@@ -208,7 +208,7 @@ export default function StartupLocationModal({
       });
       closeModal();
     } catch {
-      setErrorMessage("Could not resolve that location. Try another name.");
+      setErrorMessage("We couldn't find that place. Try a different name.");
     } finally {
       setIsResolving(false);
     }
@@ -227,12 +227,12 @@ export default function StartupLocationModal({
     >
       <div className="startup-location-logo-wrap" aria-hidden="true">
         <img className="startup-location-logo" src="/assets/logo.svg" alt="" />
-        <p className="startup-location-app-name">TerraInk</p>
+        <p className="startup-location-app-name">AtlasInk</p>
       </div>
 
       <div className="startup-location-card is-visible">
         <p className="startup-location-title" id="startup-location-title">
-          Choose Location
+          Explore a Place
         </p>
         <input
           type="text"
@@ -248,7 +248,7 @@ export default function StartupLocationModal({
           onFocus={() => setIsInputFocused(true)}
           onBlur={() => setTimeout(() => setIsInputFocused(false), 120)}
           onKeyDown={(e) => { if (e.key === "Enter") void searchNow(e.currentTarget.value); }}
-          placeholder="Type a city or place"
+          placeholder="Search for a city or place"
           autoComplete="off"
         />
         {showSuggestions ? (
@@ -268,7 +268,7 @@ export default function StartupLocationModal({
               </li>
             ))}
             {isLocationSearching ? (
-              <li className="startup-location-suggestion-status">Searching...</li>
+              <li className="startup-location-suggestion-status">Searching…</li>
             ) : null}
           </ul>
         ) : null}
@@ -279,7 +279,7 @@ export default function StartupLocationModal({
           disabled={isResolving}
         >
           <MyLocationIcon />
-          <span>{isResolving ? "Locating..." : "Get my location"}</span>
+          <span>{isResolving ? "Finding your place…" : "Use My Current Place"}</span>
         </button>
         <button
           type="button"
@@ -287,7 +287,7 @@ export default function StartupLocationModal({
           onClick={() => void handleConfirm()}
           disabled={isResolving}
         >
-          OK
+          Enter Studio
         </button>
         {errorMessage ? (
           <p className="startup-location-error" role="status">

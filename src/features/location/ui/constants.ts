@@ -1,5 +1,5 @@
 /** Placeholder shown in the location search input. */
-export const PLACEHOLDER_LOCATION_SEARCH = "Start typing a city or place";
+export const PLACEHOLDER_LOCATION_SEARCH = "Search for a city or place...";
 
 /**
  * Example coordinates used as input placeholders (Hannover, Germany).

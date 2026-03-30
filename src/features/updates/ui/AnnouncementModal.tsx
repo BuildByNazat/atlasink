@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { IoClose } from "react-icons/io5";
 
 type UpdateCategory =
@@ -214,10 +214,10 @@ export default function AnnouncementModal() {
       .flatMap((step) => step.points)
       .slice(0, 4);
   }, [release]);
-  const summaryTitle = release?.summary?.title?.trim() || "Quick Highlights";
-  const summaryHeaderTitle = release?.labels?.summaryTitle?.trim() || "What is new";
+  const summaryTitle = release?.summary?.title?.trim() || "Highlights";
+  const summaryHeaderTitle = release?.labels?.summaryTitle?.trim() || "What's new";
   const detailsHeaderTitle =
-    release?.labels?.detailsTitle?.trim() || "Update Details";
+    release?.labels?.detailsTitle?.trim() || "Release notes";
 
   function closeModal() {
     if (CURRENT_VERSION) {
@@ -297,7 +297,7 @@ export default function AnnouncementModal() {
           type="button"
           className="updates-modal-close"
           onClick={closeModal}
-          aria-label="Close announcements"
+          aria-label="Close"
         >
           <IoClose className="updates-modal-close-icon" />
         </button>
@@ -308,7 +308,7 @@ export default function AnnouncementModal() {
             {isDetailsMode ? detailsHeaderTitle : summaryHeaderTitle}
           </h2>
           <p className="updates-released-on">
-            Released on {toDisplayDate(release.date)}
+            {toDisplayDate(release.date)}
           </p>
         </header>
 
@@ -351,14 +351,14 @@ export default function AnnouncementModal() {
               {isDetailsMode ? (
                 <>
                   <button type="button" onClick={handleBack} disabled={currentStep === 0}>
-                    Back
+                    Previous
                   </button>
                   <button
                     type="button"
                     className="updates-next-button"
                     onClick={handleNext}
                   >
-                    {isLastStep ? "Finish" : "Next"}
+                    {isLastStep ? "Done" : "Next"}
                   </button>
                 </>
               ) : (
@@ -368,10 +368,10 @@ export default function AnnouncementModal() {
                     className="updates-next-button"
                     onClick={() => setViewMode("details")}
                   >
-                    Show all details
+                    See all updates
                   </button>
                   <button type="button" className="updates-okay-button" onClick={closeModal}>
-                    Okay, got it
+                    Got it
                   </button>
                 </>
               )}

@@ -1,4 +1,4 @@
-﻿import { createPortal } from "react-dom";
+import { createPortal } from "react-dom";
 import { KOFI_URL } from "@/core/config";
 
 interface SupportModalProps {
@@ -29,14 +29,16 @@ export default function SupportModal({
       >
         <div className="credits-modal-body">
           <p className="credits-modal-headline" id={titleId}>
-            ✨ Your poster is ready!
+            Your print is ready.
           </p>
           <p className="credits-modal-text">
-            If Terraink helped you create this poster, consider supporting the project on Ko-fi.
+            Poster <strong>#{posterNumber}</strong> — thank you for creating with AtlasInk.
           </p>
-          <p className="credits-modal-text">
-            This was your poster <strong>#{posterNumber}</strong> 🎉
-          </p>
+          {kofiUrl ? (
+            <p className="credits-modal-text">
+              If AtlasInk has been useful, a small contribution keeps it free for everyone.
+            </p>
+          ) : null}
           <div className="credits-modal-actions">
             {kofiUrl ? (
               <a
@@ -53,7 +55,7 @@ export default function SupportModal({
               className="credits-modal-remove"
               onClick={onClose}
             >
-              {kofiUrl ? "Maybe later" : "Close"}
+              {kofiUrl ? "Not now" : "Close"}
             </button>
           </div>
         </div>

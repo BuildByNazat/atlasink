@@ -12,12 +12,12 @@ export default function GeneralHeader({ onAboutOpen }: GeneralHeaderProps) {
         <img
           className="desktop-brand-logo brand-logo"
           src="/assets/logo.svg"
-          alt="TerraInk logo"
+          alt="AtlasInk logo"
         />
         <div className="desktop-brand-copy brand-copy">
-          <h1 className="desktop-brand-title">TerraInk</h1>
+          <h1 className="desktop-brand-title">AtlasInk</h1>
           <p className="desktop-brand-kicker app-kicker">
-            The Cartographic Poster Engine
+            Turn places into art.
           </p>
         </div>
       </div>
@@ -28,10 +28,10 @@ export default function GeneralHeader({ onAboutOpen }: GeneralHeaderProps) {
           type="button"
           className="general-header-text-btn general-header-about-text-btn"
           onClick={onAboutOpen}
-          aria-label="About"
-          title="About"
+          aria-label="Studio Info"
+          title="Studio Info"
         >
-          <span className="general-header-btn-label">About</span>
+          <span className="general-header-btn-label">Studio Info</span>
           <span className="general-header-btn-icon" aria-hidden="true">
             <InfoIcon />
           </span>

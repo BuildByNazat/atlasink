@@ -70,7 +70,7 @@ export default function DesktopLocationBar() {
                   <button
                     type="button"
                     className="location-clear-btn"
-                    aria-label="Clear location"
+                    aria-label="Clear place"
                     onMouseDown={(e) => e.preventDefault()}
                     onClick={handleClearLocation}
                   >
@@ -87,8 +87,8 @@ export default function DesktopLocationBar() {
               onMouseDown={(e) => e.preventDefault()}
               onClick={handleUseCurrentLocation}
               disabled={isLocatingUser}
-              aria-label="Use current location"
-              title="Use current location"
+              aria-label="Find my current place"
+              title="Find my current place"
             >
               <MyLocationIcon className="location-current-icon" />
             </button>
@@ -97,8 +97,8 @@ export default function DesktopLocationBar() {
               className={`icon-only-btn location-row-icon-btn${showCoords ? " is-active" : ""}`}
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => setShowCoords((v) => !v)}
-              aria-label="Toggle coordinate fields"
-              title="Show/hide lat & lon"
+              aria-label="Toggle coordinates"
+              title="Show/hide Latitude & Longitude"
             >
               <LocationIcon />
             </button>
@@ -122,7 +122,7 @@ export default function DesktopLocationBar() {
                 </li>
               ))}
               {isLocationSearching ? (
-                <li className="location-suggestion-status">Searching...</li>
+                <li className="location-suggestion-status">Finding place...</li>
               ) : null}
             </ul>
           ) : null}

@@ -68,8 +68,8 @@ export default function MobileExportFab() {
       <button
         type="button"
         className={`mobile-export-fab-trigger${isTriggerVisible ? "" : " is-hidden"}`}
-        aria-label="Export poster"
-        title="Export poster"
+        aria-label="Print Export"
+        title="Print Export"
         onClick={() => setIsOpen(true)}
         tabIndex={isTriggerVisible ? 0 : -1}
         aria-hidden={!isTriggerVisible}
@@ -91,7 +91,7 @@ export default function MobileExportFab() {
             onClick={(event) => event.stopPropagation()}
           >
             <div className="mobile-export-modal-header">
-              <h3 id="mobile-export-modal-title">Download Poster</h3>
+              <h3 id="mobile-export-modal-title">Export Studio Print</h3>
               <button
                 type="button"
                 className="mobile-export-modal-close"
@@ -143,7 +143,7 @@ export default function MobileExportFab() {
               </button>
             </div>
             <p className="mobile-export-support-label">
-              Support the project <span className="heart">❤︎</span>
+              Made with AtlasInk
             </p>
             <SocialLinkGroup variant="mobile-export" />
           </div>

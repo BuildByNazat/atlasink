@@ -21,12 +21,12 @@ const tabs: {
   label: string;
   Icon: React.ComponentType<{ className?: string }>;
 }[] = [
-  { id: "location", label: "Location", Icon: LocationIcon },
-  { id: "theme", label: "Theme", Icon: ThemeIcon },
+  { id: "location", label: "Place", Icon: LocationIcon },
+  { id: "theme", label: "Style", Icon: ThemeIcon },
   { id: "layout", label: "Layout", Icon: LayoutIcon },
   { id: "style", label: "Style", Icon: StyleIcon },
-  { id: "layers", label: "Layers", Icon: LayersIcon },
-  { id: "markers", label: "Markers", Icon: MarkersIcon },
+  { id: "layers", label: "Terrain", Icon: LayersIcon },
+  { id: "markers", label: "Memories", Icon: MarkersIcon },
 ];
 
 interface MobileNavBarProps {
@@ -74,7 +74,7 @@ export default function MobileNavBar({
       <button
         type="button"
         className="mobile-nav-settings"
-        aria-label="Settings"
+        aria-label="Studio Controls"
         disabled
       >
         <SettingsIcon className="mobile-nav-settings-icon" />

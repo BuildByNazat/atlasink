@@ -14,11 +14,11 @@ const tabs: {
   label: string;
   Icon: React.ComponentType<{ className?: string }>;
 }[] = [
-  { id: "theme", label: "Theme", Icon: ThemeIcon },
+  { id: "theme", label: "Style", Icon: ThemeIcon },
   { id: "layout", label: "Layout", Icon: LayoutIcon },
   { id: "style", label: "Style", Icon: StyleIcon },
-  { id: "layers", label: "Layers", Icon: LayersIcon },
-  { id: "markers", label: "Markers", Icon: MarkersIcon },
+  { id: "layers", label: "Terrain", Icon: LayersIcon },
+  { id: "markers", label: "Memories", Icon: MarkersIcon },
 ];
 
 interface DesktopNavBarProps {
@@ -37,17 +37,17 @@ export default function DesktopNavBar({
   onLocationToggle,
 }: DesktopNavBarProps) {
   return (
-    <nav className="desktop-nav-bar" aria-label="Settings sections">
+    <nav className="desktop-nav-bar" aria-label="Studio Controls">
       <button
         type="button"
         className={`desktop-nav-tab${isLocationVisible ? " is-active" : ""}`}
         onClick={onLocationToggle}
-        title={isLocationVisible ? "Hide location row" : "Show location row"}
-        aria-label={isLocationVisible ? "Hide location row" : "Show location row"}
+        title={isLocationVisible ? "Hide place bar" : "Show place bar"}
+        aria-label={isLocationVisible ? "Hide place bar" : "Show place bar"}
         aria-pressed={isLocationVisible}
       >
         <LocationIcon className="desktop-nav-icon" />
-        <span className="desktop-nav-label">Location</span>
+        <span className="desktop-nav-label">Place</span>
       </button>
 
       {tabs.map(({ id, label, Icon }) => (
@@ -68,11 +68,11 @@ export default function DesktopNavBar({
       <button
         type="button"
         className="desktop-nav-tab desktop-nav-tab--settings"
-        aria-label="Settings"
+        aria-label="Studio Controls"
         disabled
       >
         <SettingsIcon className="desktop-nav-icon" />
-        <span className="desktop-nav-label">Settings</span>
+        <span className="desktop-nav-label">Studio</span>
       </button>
     </nav>
   );

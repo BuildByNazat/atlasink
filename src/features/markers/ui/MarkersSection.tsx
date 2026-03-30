@@ -85,11 +85,11 @@ function DeleteAllMarkersModal({
             className="marker-delete-modal-headline"
             id="marker-delete-modal-title"
           >
-            Delete all markers?
+            Clear all memories?
           </p>
           <p className="marker-delete-modal-text">
-            This will remove {markerCount} marker{markerCount === 1 ? "" : "s"}{" "}
-            from the map.
+            This will remove {markerCount} memory{markerCount === 1 ? "" : "ies"}{" "}
+            from your canvas.
           </p>
           <div className="marker-delete-modal-actions">
             <button
@@ -97,7 +97,7 @@ function DeleteAllMarkersModal({
               className="marker-delete-modal-cancel"
               onClick={onCancel}
             >
-              Keep markers
+              Keep memories
             </button>
             <button
               type="button"
@@ -105,7 +105,7 @@ function DeleteAllMarkersModal({
               onClick={onConfirm}
             >
               <TrashIcon />
-              Delete all markers
+              Clear all memories
             </button>
           </div>
         </div>
@@ -232,7 +232,7 @@ export default function MarkersSection() {
       const iconCounts = new Map<string, number>();
       return markers.map((marker, index) => {
         const icon = findMarkerIcon(marker.iconId, customMarkerIcons);
-        const iconLabel = String(icon?.label ?? "Marker").trim() || "Marker";
+        const iconLabel = String(icon?.label ?? "Memory").trim() || "Memory";
         const nextCount = (iconCounts.get(iconLabel) ?? 0) + 1;
         iconCounts.set(iconLabel, nextCount);
         return {
@@ -354,8 +354,8 @@ export default function MarkersSection() {
       ? markerRows.find(({ marker }) => marker.id === expandedMarkerId) ?? null
       : null;
   const markerHelpText = isMobileViewport
-    ? "Click an icon to drop a marker on the current map location. Marker settings apply to all markers and can be moved directly on the map. In marker edit mode, drag to move markers and use the marker size slider below the location row to resize."
-    : "Click an icon to drop a marker on the current map location. Marker settings apply to all markers and can be moved directly on the map. In marker edit mode, drag to move, use two-finger pinch or mouse wheel to resize, and use scroll or the +/- map controls to zoom.";
+    ? "Tap a symbol to pin a memory on the canvas. Memory settings apply to all pins and can be adjusted directly. In memory mode, drag to reposition and use the size slider to scale."
+    : "Select a symbol to pin a memory on the canvas. Memory settings apply to all pins. In memory mode, drag to reposition, use your scroll wheel to resize, or use map controls to zoom.";
 
   return (
     <section className="panel-block color-editor-screen marker-settings-screen">
@@ -373,7 +373,7 @@ export default function MarkersSection() {
       ) : null}
 
       <div className="markers-section-head">
-        <p className="section-summary-label">MARKERS</p>
+        <p className="section-summary-label">MEMORIES</p>
         <div className="markers-section-head-actions">
           {!isMarkerEditorActive ? (
             <button
@@ -382,13 +382,13 @@ export default function MarkersSection() {
               onClick={toggleMarkerSettings}
               aria-label={
                 isSettingsOpen
-                  ? "Done with marker settings"
-                  : "Open marker settings"
+                  ? "Done with memory settings"
+                  : "Open memory settings"
               }
               title={
                 isSettingsOpen
-                  ? "Done with marker settings"
-                  : "Open marker settings"
+                  ? "Done with memory settings"
+                  : "Open memory settings"
               }
             >
               <span className="marker-row__icon-btn-icon" aria-hidden="true">
@@ -405,10 +405,10 @@ export default function MarkersSection() {
               className={`marker-row__icon-btn marker-header-action-btn${isMarkerEditorActive ? " is-active" : ""}`}
               onClick={toggleMarkerEditMode}
               aria-label={
-                isMarkerEditorActive ? "Done editing markers" : "Edit markers"
+                isMarkerEditorActive ? "Done editing memories" : "Edit memories"
               }
               title={
-                isMarkerEditorActive ? "Done editing markers" : "Edit markers"
+                isMarkerEditorActive ? "Done editing memories" : "Edit memories"
               }
               disabled={!isMarkerEditorActive && !hasMarkers}
             >
@@ -416,7 +416,7 @@ export default function MarkersSection() {
                 {isMarkerEditorActive ? <CheckIcon /> : <EditIcon />}
               </span>
               <span className="marker-row__icon-btn-label">
-                {isMarkerEditorActive ? "Done" : "Edit Markers"}
+                {isMarkerEditorActive ? "Done" : "Edit Memories"}
               </span>
             </button>
           ) : null}
@@ -424,7 +424,7 @@ export default function MarkersSection() {
             <button
               type="button"
               className="icon-only-btn marker-info-btn"
-              aria-label="Marker picker help"
+              aria-label="Memory guide"
             >
               <InfoIcon />
             </button>
@@ -452,11 +452,11 @@ export default function MarkersSection() {
         {!isMarkerEditorActive && isSettingsOpen ? (
           <div className="marker-settings-card">
             <div className="marker-settings-card__header">
-              <h3>Marker Settings</h3>
+              <h3>Memory Settings</h3>
             </div>
             <p className="marker-settings-card__theme-note">
-              Marker settings apply to all markers. Unlock markers to edit each
-              marker directly.
+              Memory settings apply to all pins. Unlock memories to refine each
+              pin directly.
             </p>
 
             <div className="marker-editor-card__stack">
@@ -539,7 +539,7 @@ export default function MarkersSection() {
             {isColorPickerFocused && activeColorPickerMarker ? (
               <article className="marker-editor-card">
                 <div className="marker-settings-card__header">
-                  <h3>Edit Marker Color</h3>
+                  <h3>Edit Memory Color</h3>
                   <button
                     type="button"
                     className="marker-row__icon-btn"
@@ -701,7 +701,7 @@ export default function MarkersSection() {
                                       type="button"
                                       className="marker-row__icon-btn marker-row__icon-btn--danger"
                                       onClick={() => removeMarker(marker.id)}
-                                      title="Delete marker"
+                                      title="Remove memory"
                                     >
                                       <TrashIcon />
                                     </button>

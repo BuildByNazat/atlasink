@@ -16,17 +16,17 @@ export default function SettingsInfo({
   coordinates,
 }: SettingsInfoProps) {
   const rows = [
-    { label: "Location", value: location },
-    { label: "Theme", value: theme },
+    { label: "Place", value: location },
+    { label: "Style", value: theme },
     { label: "Layout", value: layout },
-    { label: "Poster Size", value: posterSize },
-    { label: "Markers", value: markers },
+    { label: "Dimensions", value: posterSize },
+    { label: "Memories", value: markers },
     { label: "Coordinates", value: coordinates },
   ];
 
   return (
-    <section className="settings-info-card" aria-label="Current settings">
-      <h3 className="settings-info-title">Current Settings</h3>
+    <section className="settings-info-card" aria-label="Studio Configuration">
+      <h3 className="settings-info-title">Studio Configuration</h3>
       <dl className="settings-info-list">
         {rows.map((row) => (
           <div key={row.label} className="settings-info-row">

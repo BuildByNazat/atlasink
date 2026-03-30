@@ -60,9 +60,8 @@ export default function PickerModal({
             type="button"
             className="picker-modal-close"
             onClick={onClose}
-            aria-label={`Close ${title}`}
-          >
-            x
+            aria-label={`Close ${title}`}>
+            ×
           </button>
         </div>
 

@@ -1,4 +1,4 @@
-# TerraInk — Claude Code Guide
+# AtlasInk — Claude Code Guide
 
 ## Commands
 

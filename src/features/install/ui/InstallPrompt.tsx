@@ -28,7 +28,7 @@ export default function InstallPrompt() {
               className="install-prompt-mobile-icon"
               aria-hidden="true"
             />
-            Install TerraInk for faster access and a better experience.
+            Install AtlasInk for a native app experience.
           </span>
           <div className="install-prompt-actions">
             <button
@@ -43,7 +43,7 @@ export default function InstallPrompt() {
               className="install-prompt-dismiss"
               onClick={dismiss}
             >
-              Maybe later
+              Not now
             </button>
             {INSTALL_DIAGNOSTICS_ENABLED ? (
               <button
@@ -79,8 +79,7 @@ export default function InstallPrompt() {
             <span className="install-prompt-share-icon" aria-hidden="true">
               <ShareIcon />
             </span>{" "}
-            then <strong>Add to Home Screen</strong> for faster access and a
-            better experience.
+            then <strong>Add to Home Screen</strong> to install AtlasInk.
           </span>
           <div className="install-prompt-actions">
             <button
@@ -88,7 +87,7 @@ export default function InstallPrompt() {
               className="install-prompt-dismiss"
               onClick={dismiss}
             >
-              Maybe later
+              Not now
             </button>
             {INSTALL_DIAGNOSTICS_ENABLED ? (
               <button
@@ -120,11 +119,9 @@ export default function InstallPrompt() {
               className="install-prompt-mobile-icon"
               aria-hidden="true"
             />
-            For faster access and a better experience, install TerraInk from
-            your browser menu:
-            <strong> Install app </strong>
-            or
-            <strong> Add to Home screen</strong>
+            Open your browser menu and choose{" "}
+            <strong>Install app</strong> or{" "}
+            <strong>Add to Home Screen</strong>.
           </span>
           <div className="install-prompt-actions">
             <button
@@ -132,7 +129,7 @@ export default function InstallPrompt() {
               className="install-prompt-dismiss"
               onClick={dismiss}
             >
-              Maybe later
+              Not now
             </button>
             {INSTALL_DIAGNOSTICS_ENABLED ? (
               <button

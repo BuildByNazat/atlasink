@@ -72,16 +72,16 @@ function HelpUsGrowSection({
 
   return (
     <section className="info-panel-section">
-      <h3>Help Us Grow</h3>
+      <h3>Support the Studio</h3>
       <p className="hug-copy">
-        Terraink is 100% client-side and open-source. Help us build the future
-        of map art by contributing to our roadmap!
+        AtlasInk is free, private, and runs entirely in your browser. If it adds
+        value to your work, here's how you can support it.
       </p>
 
       <div className="hug-rows">
         {/* Support the project */}
         <div className="hug-row">
-          <span className="hug-row-label">Support the project</span>
+          <span className="hug-row-label">Open source</span>
           <div className="hug-row-content">
             {repoUrl ? (
               <a
@@ -89,7 +89,7 @@ function HelpUsGrowSection({
                 href={repoUrl}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Open TerraInk repository on GitHub"
+                aria-label="Open AtlasInk repository on GitHub"
               >
                 <GitHubIcon className="badge-icon" />
                 <span>GitHub Repo</span>
@@ -106,7 +106,7 @@ function HelpUsGrowSection({
                 href={`${repoUrl}/stargazers`}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Star TerraInk on GitHub"
+                aria-label="Star AtlasInk on GitHub"
               >
                 <StarIcon className="badge-icon" />
                 <span>{starsText !== null ? starsText : "Star"}</span>
@@ -126,7 +126,7 @@ function HelpUsGrowSection({
                 href={kofiUrl}
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Support TerraInk on Ko-fi"
+                aria-label="Support AtlasInk on Ko-fi"
               >
                 <KofiIcon className="badge-icon" />
                 <span>Support on Ko-fi</span>
@@ -142,7 +142,7 @@ function HelpUsGrowSection({
 
         {/* Spread the word */}
         <div className="hug-row">
-          <span className="hug-row-label">Spread the word</span>
+          <span className="hug-row-label">Follow along</span>
           <div className="hug-row-content social-links-row">
             {socialLinks.map(({ href, Icon, label }) =>
               href ? (
@@ -152,7 +152,7 @@ function HelpUsGrowSection({
                   href={href}
                   target="_blank"
                   rel="noreferrer"
-                  aria-label={`Follow TerraInk on ${label}`}
+                  aria-label={`Follow AtlasInk on ${label}`}
                   title={label}
                 >
                   <Icon className="social-icon" />
@@ -172,11 +172,11 @@ function HelpUsGrowSection({
 
         {/* Support the mission */}
         <div className="hug-row">
-          <span className="hug-row-label">Support the mission</span>
+          <span className="hug-row-label">Keep it visible</span>
           <div className="hug-row-content">
             <span className="hug-credits-note">
               <CheckIcon className="hug-check-icon" />
-              Include credits to help others discover the tool
+              Show the AtlasInk brand on your poster to help others find it
             </span>
           </div>
         </div>

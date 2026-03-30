@@ -61,7 +61,7 @@ export default function DesktopExportFab() {
           {isLoading("png")
             ? <LoaderIcon className="desktop-export-btn-icon is-spinning" />
             : <DownloadIcon className="desktop-export-btn-icon" />}
-          <span className="desktop-export-label-default">Download</span>
+          <span className="desktop-export-label-default">Print Export</span>
           <span className="desktop-export-label-hover">PNG</span>
         </button>
       </div>

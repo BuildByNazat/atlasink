@@ -1,7 +1,7 @@
 {
-  "name": "TerraInk",
-  "short_name": "TerraInk",
-  "description": "Free map poster generator powered by OpenStreetMap data.",
+  "name": "AtlasInk",
+  "short_name": "AtlasInk",
+  "description": "AtlasInk is a premium map poster studio for creating custom city art, memory maps, and print-ready location posters.",
   "id": "/",
   "start_url": "/",
   "scope": "/",

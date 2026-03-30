@@ -110,7 +110,7 @@ export default function MapDimensionFields({
       {showSizeFields ? (
         <div className="map-size-fields-row">
           <label>
-            Width (cm)
+            Canvas Width (cm)
             <input
               className="form-control-tall"
               name="width"
@@ -124,7 +124,7 @@ export default function MapDimensionFields({
             />
           </label>
           <label>
-            Height (cm)
+            Canvas Height (cm)
             <input
               className="form-control-tall"
               name="height"
@@ -143,7 +143,7 @@ export default function MapDimensionFields({
       {showDistanceField ? (
         <label className="distance-slider-field">
           <span>
-            <span>Distance (m)</span>
+            <span>Focal Distance (m)</span>
             <input
               className="distance-slider-input"
               name="distance"
@@ -154,7 +154,7 @@ export default function MapDimensionFields({
               value={form.distance}
               onChange={onChange}
               onBlur={onNumericFieldBlur}
-              aria-label="Distance in meters"
+              aria-label="Focal Distance in meters"
             />
           </span>
           <input
@@ -170,7 +170,7 @@ export default function MapDimensionFields({
                 sliderValueToDistance(Number(event.target.value)),
               )
             }
-            aria-label="Distance in meters"
+            aria-label="Focal Distance in meters"
           />
           <span className="distance-slider-meta">
             {sliderMetaMarks.map((mark, index) => {

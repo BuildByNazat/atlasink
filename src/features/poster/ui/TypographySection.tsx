@@ -34,11 +34,11 @@ function CreditsRemovalModal({
       >
         <div className="credits-modal-body">
           <p className="credits-modal-headline" id="credits-modal-title">
-            ✨ Wait! Did you know Terraink is open-source?
+            ✨ Wait! Did you know AtlasInk is a labor of love?
           </p>
           <p className="credits-modal-text">
-            Keeping the credit visible helps more people find this tool and
-            allows me to keep it <strong>100% free</strong> and client-side.
+            Keeping the brand visible helps more people find this studio and
+            allows me to keep it <strong>100% free</strong> and private.
           </p>
           <div className="credits-modal-actions">
             <button
@@ -97,9 +97,9 @@ export default function TypographySection({
         />
       )}
       <section className="panel-block">
-        <p className="section-summary-label">STYLE</p>
+        <p className="section-summary-label">TYPOGRAPHY & CONTENT</p>
         <label className="toggle-field">
-          <span>Poster text</span>
+          <span>Canvas Labels</span>
           <span className="theme-switch">
             <input
               type="checkbox"
@@ -111,7 +111,7 @@ export default function TypographySection({
           </span>
         </label>
         <label className="toggle-field">
-          <span>Overlay layer</span>
+          <span>Memory Pins</span>
           <span className="theme-switch">
             <input
               type="checkbox"
@@ -125,7 +125,7 @@ export default function TypographySection({
 
         <div className="field-grid keep-two-mobile">
           <label>
-            Display city
+            Place Title
             <input
               className="form-control-tall"
               name="displayCity"
@@ -135,7 +135,7 @@ export default function TypographySection({
             />
           </label>
           <label>
-            Display country
+            Region Label
             <input
               className="form-control-tall"
               name="displayCountry"
@@ -165,7 +165,7 @@ export default function TypographySection({
         </label>
 
         <label className="toggle-field credits-toggle-field">
-          <span>Include Credits</span>
+          <span>Show AtlasInk Brand</span>
           <span className="theme-switch">
             <input
               type="checkbox"
@@ -177,8 +177,8 @@ export default function TypographySection({
           </span>
         </label>
         <p className="credits-hint">
-          Keep this enabled to help others discover this open-source project and
-          support future updates!
+          Keep this enabled to help others discover AtlasInk and support future
+          updates to the studio!
         </p>
       </section>
     </>

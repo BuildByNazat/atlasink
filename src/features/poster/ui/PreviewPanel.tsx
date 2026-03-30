@@ -41,9 +41,9 @@ import {
   getLayoutOption,
 } from "@/features/layout/infrastructure/layoutRepository";
 
-const LOCKED_HINT = "Map is locked to prevent unintended movement.";
-const UNLOCK_HINT = `${LOCKED_HINT}\nClick to unlock map editing.`;
-const RECENTER_HINT = "Recenter map to the current location";
+const LOCKED_HINT = "Canvas is locked to preserve your composition.";
+const UNLOCK_HINT = `${LOCKED_HINT}\nUnlock for studio adjustments.`;
+const RECENTER_HINT = "Recenter view to your focal point.";
 const COUNTRY_VIEW_ZOOM_LEVEL = 10;
 const CONTINENT_VIEW_ZOOM_LEVEL = 6;
 const DEFAULT_LOCATION_LABEL =
@@ -176,7 +176,7 @@ export default function PreviewPanel() {
     DEFAULT_LOCATION_LABEL;
   const infoLayoutLabel = layoutOption.name;
   const markerCount = state.markers.length;
-  const markersLabel = `${markerCount} marker${markerCount === 1 ? "" : "s"}`;
+  const markersLabel = `${markerCount} memory${markerCount === 1 ? "" : "ies"}`;
   const coordinatesLabel = `${formLat.toFixed(4)}, ${formLon.toFixed(4)}`;
   const isCityCountryView = mapZoom >= COUNTRY_VIEW_ZOOM_LEVEL;
   const isCountryContinentView =
@@ -448,7 +448,7 @@ export default function PreviewPanel() {
             showOverlay={form.showMarkers}
           />
 
-          <div className="map-controls" aria-label="Map controls">
+          <div className="map-controls" aria-label="Studio View Controls">
             {!isEditing ? (
               <>
                 <div className="map-control-group">
@@ -481,12 +481,12 @@ export default function PreviewPanel() {
                       className={`map-control-btn${isRotationEnabled ? " is-active" : ""}`}
                       onClick={handleToggleRotation}
                       title={
-                        isRotationEnabled ? "Disable rotation" : "Enable rotation"
+                        isRotationEnabled ? "Disable orientation adjust" : "Rotate Canvas"
                       }
                     >
                       <RotateIcon />
                       <span>
-                        {isRotationEnabled ? "Disable Rotation" : "Enable Rotation"}
+                        {isRotationEnabled ? "Lock Orientation" : "Rotate Canvas"}
                       </span>
                     </button>
                   ) : null}
@@ -498,12 +498,12 @@ export default function PreviewPanel() {
                       className={`map-control-btn${isRotationEnabled ? " is-active" : ""}`}
                       onClick={handleToggleRotation}
                       title={
-                        isRotationEnabled ? "Disable rotation" : "Enable rotation"
+                        isRotationEnabled ? "Disable orientation adjust" : "Rotate Canvas"
                       }
                     >
                       <RotateIcon />
                       <span>
-                        {isRotationEnabled ? "Disable Rotation" : "Enable Rotation"}
+                        {isRotationEnabled ? "Lock Orientation" : "Rotate Canvas"}
                       </span>
                     </button>
                   </div>
@@ -514,7 +514,7 @@ export default function PreviewPanel() {
                       type="button"
                       className="map-control-btn"
                       onClick={handleZoomOut}
-                      title="Zoom out"
+                      title="Decrease scale"
                     >
                       <MinusIcon />
                     </button>
@@ -526,13 +526,13 @@ export default function PreviewPanel() {
                       step={0.1}
                       value={mapZoom}
                       onChange={handleZoomSliderChange}
-                      aria-label="Zoom level"
+                      aria-label="Magnification Level"
                     />
                     <button
                       type="button"
                       className="map-control-btn"
                       onClick={handleZoomIn}
-                      title="Zoom in"
+                      title="Increase scale"
                     >
                       <PlusIcon />
                     </button>
@@ -544,7 +544,7 @@ export default function PreviewPanel() {
                       type="button"
                       className="map-control-btn"
                       onClick={() => handleRotateBy(-15)}
-                      title="Rotate left 15 degrees"
+                      title="Orient left"
                     >
                       <RotateLeftIcon />
                     </button>
@@ -556,13 +556,13 @@ export default function PreviewPanel() {
                       step={15}
                       value={Math.round(mapBearing / 15) * 15}
                       onChange={handleRotationSliderChange}
-                      aria-label="Rotation angle"
+                      aria-label="Canvas Orientation"
                     />
                     <button
                       type="button"
                       className="map-control-btn"
                       onClick={() => handleRotateBy(15)}
-                      title="Rotate right 15 degrees"
+                      title="Orient right"
                     >
                       <RotateRightIcon />
                     </button>

@@ -43,12 +43,12 @@ const accordionSections: {
   label: string;
   Icon: React.ComponentType<{ className?: string }>;
 }[] = [
-  { id: "location", label: "Location", Icon: LocationIcon },
-  { id: "theme", label: "Theme", Icon: ThemeIcon },
+  { id: "location", label: "Place", Icon: LocationIcon },
+  { id: "theme", label: "Style", Icon: ThemeIcon },
   { id: "layout", label: "Layout", Icon: LayoutIcon },
-  { id: "layers", label: "Layers", Icon: LayersIcon },
-  { id: "markers", label: "Markers", Icon: MarkersIcon },
-  { id: "style", label: "Style", Icon: StyleIcon },
+  { id: "layers", label: "Terrain", Icon: LayersIcon },
+  { id: "markers", label: "Memories", Icon: MarkersIcon },
+  { id: "style", label: "Title & Type", Icon: StyleIcon },
 ];
 
 export default function SettingsPanel({

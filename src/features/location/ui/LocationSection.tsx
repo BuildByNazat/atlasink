@@ -42,9 +42,9 @@ export default function LocationSection({
 
   return (
     <section className="panel-block">
-      <h2>Location</h2>
+      <h2>Place</h2>
       <label>
-        Location
+        Search a place
         <div className="location-autocomplete">
           <div className="location-search-row">
             <div className="location-input-wrap">
@@ -63,7 +63,7 @@ export default function LocationSection({
                 <button
                   type="button"
                   className="location-clear-btn"
-                  aria-label="Clear location"
+                  aria-label="Clear search"
                   onMouseDown={(event) => event.preventDefault()}
                   onClick={onClearLocation}
                 >
@@ -77,8 +77,8 @@ export default function LocationSection({
               onMouseDown={(event) => event.preventDefault()}
               onClick={onUseCurrentLocation}
               disabled={isLocatingUser}
-              aria-label="Use current location"
-              title="Use current location"
+              aria-label="Use my location"
+              title="Use my location"
             >
               <MyLocationIcon />
             </button>
@@ -100,7 +100,7 @@ export default function LocationSection({
                 </li>
               ))}
               {isLocationSearching ? (
-                <li className="location-suggestion-status">Searching...</li>
+                <li className="location-suggestion-status">Searching…</li>
               ) : null}
             </ul>
           ) : null}
@@ -113,7 +113,7 @@ export default function LocationSection({
       </label>
       <div className="field-grid keep-two-mobile">
         <label>
-          Latitude (optional)
+          Latitude
           <input
             className="form-control-tall"
             name="latitude"
@@ -123,7 +123,7 @@ export default function LocationSection({
           />
         </label>
         <label>
-          Longitude (optional)
+          Longitude
           <input
             className="form-control-tall"
             name="longitude"
