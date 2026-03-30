@@ -16,7 +16,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.76rem;
-  color: #88b7d5;
+  color: var(--accent-slate);
 }
 
 label {
@@ -24,7 +24,7 @@ label {
   margin-bottom: 9px;
   font-size: 0.84rem;
   font-weight: 600;
-  color: #d9e7f2;
+  color: var(--text-main);
 }
 
 .field-grid {
@@ -193,8 +193,8 @@ label {
 
 .map-details-card {
   border: none;
-  border-radius: 12px;
-  background: rgba(9, 18, 27, 0.8);
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
   padding: 0;
   display: grid;
   gap: 10px;
@@ -404,11 +404,11 @@ input:not([type="checkbox"]):not([type="radio"]),
 select {
   width: 100%;
   margin-top: 4px;
-  border: 1px solid rgba(151, 183, 207, 0.26);
-  border-radius: 10px;
-  background: rgba(9, 18, 27, 0.84);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-3);
   padding: 9px 10px;
-  color: #ebf3fa;
+  color: var(--text-main);
   outline: none;
   transition:
     border-color 0.16s ease,
@@ -416,15 +416,14 @@ select {
 }
 
 input::placeholder {
-  color: #8ca8bc;
+  color: var(--text-muted);
 }
 
 input:not([type="checkbox"]):not([type="radio"]):focus,
 select:focus {
-  border-color: rgba(102, 174, 209, 0.82);
-  box-shadow: 0 0 0 3px rgba(75, 149, 186, 0.24);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
 }
-
 .location-autocomplete {
   position: relative;
   margin-top: 4px;
@@ -454,10 +453,10 @@ button.location-current-btn {
   min-height: 48px;
   margin: 0;
   padding: 0;
-  border: 1px solid rgba(151, 183, 207, 0.34);
-  border-radius: 10px;
-  background: rgba(20, 38, 52, 0.94);
-  color: #d9e7f2;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-3);
+  color: var(--text-main);
   font-size: 0.72rem;
   font-weight: 700;
   display: inline-flex;
@@ -494,10 +493,10 @@ button.location-current-btn:focus-visible {
   margin: 0;
   padding: 6px;
   list-style: none;
-  border: 1px solid rgba(151, 183, 207, 0.36);
-  border-radius: 10px;
-  background: rgba(9, 18, 27, 0.98);
-  box-shadow: 0 16px 28px rgba(0, 0, 0, 0.44);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+  box-shadow: var(--shadow-md);
   max-height: 220px;
   overflow-y: auto;
   z-index: 30;
@@ -507,8 +506,8 @@ button.location-current-btn:focus-visible {
   width: 100%;
   border: none;
   background: transparent;
-  color: #dfebf6;
-  border-radius: 8px;
+  color: var(--text-main);
+  border-radius: var(--radius-sm);
   text-align: left;
   padding: 8px 10px;
   font-size: 0.82rem;
@@ -547,9 +546,9 @@ button.location-current-btn:focus-visible {
 
 .theme-section {
   margin: 0 0 10px;
-  border: 1px solid rgba(151, 183, 207, 0.34);
-  border-radius: 12px;
-  background: rgba(9, 18, 27, 0.8);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
   padding: 10px;
 }
 
@@ -596,7 +595,7 @@ button.location-current-btn:focus-visible {
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: #e7f2fb;
+  color: var(--text-main);
   text-transform: uppercase;
 }
 
@@ -604,7 +603,7 @@ button.location-current-btn:focus-visible {
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
-  color: #e7f2fb;
+  color: var(--text-main);
   text-transform: uppercase;
 }
 
@@ -707,10 +706,10 @@ button.theme-customize-btn {
   min-height: 42px;
   margin: 0;
   padding: 0;
-  border: 1px solid rgba(151, 183, 207, 0.42);
-  border-radius: 10px;
-  background: rgba(20, 38, 52, 0.94);
-  color: #d9e7f2;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-3);
+  color: var(--text-main);
   font-size: 0.72rem;
   font-weight: 700;
   line-height: 1;
@@ -757,10 +756,10 @@ button.theme-edit-done-btn {
   width: auto;
   margin: 0;
   padding: 5px 10px;
-  border: 1px solid rgba(151, 183, 207, 0.42);
-  border-radius: 8px;
-  background: rgba(24, 49, 64, 0.95);
-  color: #e8f3fb;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-3);
+  color: var(--text-main);
   font-size: 0.72rem;
   font-weight: 700;
 }

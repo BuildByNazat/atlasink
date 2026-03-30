@@ -1,13 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap");
 
 :root {
-  /* ── Existing colour tokens ── */
-  --ink: #e6edf4;
-  --panel: rgba(10, 20, 31, 0.92);
-  --line: rgba(146, 176, 200, 0.24);
-  --strong-line: rgba(166, 199, 223, 0.45);
-  --positive: #6bd8a0;
-  --negative: #ff8372;
+  /* ── Core Palette ── */
+  --bg-color: #0F1115;
+  --panel-bg: #171A21;
+  --soft-panel: #1E232D;
+  --text-main: #F5F1E8;
+  --text-muted: #A7AFBD;
+  --accent-gold: #C9A86A;
+  --accent-slate: #6F8196;
+  --success: #7FA37C;
+  --error: #D07B7B;
+
+  /* ── Existing colour tokens (re-mapped) ── */
+  --ink: var(--text-main);
+  --panel: var(--panel-bg);
+  --line: rgba(255, 255, 255, 0.08);
+  --strong-line: rgba(255, 255, 255, 0.16);
+  --positive: var(--success);
+  --negative: var(--error);
 
   /* ── Layout dimensions ── */
   --command-bar-height: 52px;
@@ -16,12 +27,9 @@
   --sidebar-nav-width: 52px;       /* icon-only rail within the sidebar */
 
   /* ── Layered surface backgrounds ── */
-  /* surface-1: deepest — app chrome, command bar, sidebar rail */
-  --surface-1: rgba(9, 16, 24, 0.97);
-  /* surface-2: mid — panel cards, settings slides */
-  --surface-2: rgba(11, 20, 30, 0.98);
-  /* surface-3: top — inputs, dropdowns, floating pills */
-  --surface-3: rgba(20, 36, 52, 0.97);
+  --surface-1: var(--bg-color);
+  --surface-2: var(--panel-bg);
+  --surface-3: var(--soft-panel);
 
   /* ── Border radii scale ── */
   --radius-sm: 8px;
@@ -29,10 +37,15 @@
   --radius-lg: 16px;
   --radius-xl: 20px;
 
+  /* ── Shadows ── */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.5);
+
   /* ── Brand accent (sidebar active state, focus rings) ── */
-  --accent: #4bb8d8;
-  --accent-dim: rgba(75, 184, 216, 0.16);
-  --accent-border: rgba(75, 184, 216, 0.45);
+  --accent: var(--accent-gold);
+  --accent-dim: rgba(201, 168, 106, 0.16);
+  --accent-border: rgba(201, 168, 106, 0.45);
 }
 
 *,
@@ -46,26 +59,7 @@ body {
   margin: 0;
   color: var(--ink);
   font-family: "Instrument Sans", sans-serif;
-  background-color: #080f18;
-  background:
-    radial-gradient(
-      circle at 84% 14%,
-      rgba(255, 132, 79, 0.2),
-      transparent 42%
-    ),
-    radial-gradient(
-      circle at 12% 86%,
-      rgba(64, 154, 192, 0.22),
-      transparent 38%
-    ),
-    repeating-linear-gradient(
-      90deg,
-      rgba(164, 195, 219, 0.05) 0,
-      rgba(164, 195, 219, 0.05) 1px,
-      transparent 1px,
-      transparent 24px
-    ),
-    linear-gradient(160deg, #09121c, #0d1a27 45%, #0a1824 100%);
+  background-color: var(--bg-color);
   min-height: 100vh;
   min-height: 100dvh;
   width: 100%;
@@ -75,5 +69,5 @@ body {
 #root {
   min-height: 100vh;
   min-height: 100dvh;
-  background-color: #080f18;
+  background-color: var(--bg-color);
 }
