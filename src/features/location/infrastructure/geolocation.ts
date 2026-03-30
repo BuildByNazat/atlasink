@@ -147,16 +147,16 @@ export function getGeolocationFailureMessage(
 
   const baseMessage =
     reason === "denied"
-      ? "Location access is blocked. Enable location permission in your browser settings, then try again."
+      ? "Location access was denied. Enable it in your browser settings to use this feature."
       : reason === "unsupported"
-        ? "Location is not supported in this browser."
+        ? "Your browser doesn't support location access."
         : reason === "insecure"
-          ? "Location requires a secure connection (HTTPS)."
-          : "Could not get your location right now. Check location services and try again.";
+          ? "Location access requires a secure connection (HTTPS)."
+          : "Unable to determine your location. Please try again.";
 
   if (!includeManualFallback) {
     return baseMessage;
   }
 
-  return `${baseMessage} You can type a location manually.`;
+  return `${baseMessage} Or search for a place manually.`;
 }

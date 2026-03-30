@@ -39,13 +39,13 @@ export function validatePosterInput(
 
   if (!locationText && (latText || lonText) && !hasManualCoordinates) {
     throw new Error(
-      "When location is empty, both latitude and longitude are required.",
+      "Enter either a place name, or both latitude and longitude.",
     );
   }
 
   if (!locationText && !hasManualCoordinates) {
     throw new Error(
-      "Location is required unless both latitude and longitude are provided.",
+      "Enter a place name, or provide coordinates to continue.",
     );
   }
 

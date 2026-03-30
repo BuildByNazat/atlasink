@@ -25,7 +25,7 @@ Turn places into art.
 [![Cloudflare Badge](https://img.shields.io/badge/Cloudflare-F38020?logo=cloudflare&logoColor=fff&style=for-the-badge)](https://www.cloudflare.com)
 [![Docker Badge](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff&style=for-the-badge)](https://www.docker.com)
 
-> Note: AtlasInk is a premium map poster studio for creating custom city art, memory maps, and print-ready location posters. This is a for-fun, open-source project, and community contributions are very welcome.
+> AtlasInk is a premium map poster studio for creating custom city art, memory maps, and print-ready location posters. Open-source and community contributions are welcome.
 
 ## Acknowledgment
 
@@ -35,10 +35,10 @@ This project is a JavaScript reimplementation inspired by the original MapToPost
 
 - **Custom city map posters** for any location in the world, powered by real OpenStreetMap data
 - **Smart geocoding** — search for any city or region by name, or enter coordinates manually
-- **Rich theme system** — choose from dozens of curated themes or build your own custom color palette
-- **Detailed map layers** — roads, water bodies, parks, and building footprints with per-layer styling
-- **Typography controls** — set city/country display labels and load any Google Fonts family
-- **High-resolution PNG export** — download a print-ready poster at any defined dimension
+- **Style engine** — choose from curated styles or build a Signature Style with a custom colour palette
+- **Terrain layers** — roads, water bodies, parks, and building footprints with per-layer styling
+- **Typography controls** — set the Place Title, region label, and load any Google Fonts family
+- **Print Export** — download a print-ready poster at any defined dimension as a high-resolution PNG
 
 ## Data Providers and Mapping Stack
 
