@@ -1,84 +1,57 @@
 import {
   LocationIcon,
   ThemeIcon,
-  LayoutIcon,
-  LayersIcon,
   MarkersIcon,
+  DownloadIcon,
   StyleIcon,
-  SettingsIcon,
 } from "./Icons";
 
-export type MobileTab =
-  | "location"
-  | "theme"
-  | "layout"
-  | "style"
-  | "layers"
-  | "markers";
+export type MobileStep = "place" | "look" | "details" | "export";
 
 const tabs: {
-  id: MobileTab;
+  id: MobileStep;
   label: string;
   Icon: React.ComponentType<{ className?: string }>;
 }[] = [
-  { id: "location", label: "Place", Icon: LocationIcon },
-  { id: "theme", label: "Style", Icon: ThemeIcon },
-  { id: "layout", label: "Layout", Icon: LayoutIcon },
-  { id: "style", label: "Style", Icon: StyleIcon },
-  { id: "layers", label: "Terrain", Icon: LayersIcon },
-  { id: "markers", label: "Memories", Icon: MarkersIcon },
+  { id: "place", label: "Place", Icon: LocationIcon },
+  { id: "look", label: "Look", Icon: ThemeIcon },
+  { id: "details", label: "Details", Icon: StyleIcon },
+  { id: "export", label: "Export", Icon: DownloadIcon },
 ];
 
 interface MobileNavBarProps {
-  activeTab: MobileTab;
+  activeStep: MobileStep;
   drawerOpen: boolean;
-  isLocationVisible: boolean;
-  onTabChange: (tab: MobileTab) => void;
+  onStepChange: (step: MobileStep) => void;
 }
 
 export default function MobileNavBar({
-  activeTab,
+  activeStep,
   drawerOpen,
-  isLocationVisible,
-  onTabChange,
+  onStepChange,
 }: MobileNavBarProps) {
   return (
     <div className="mobile-nav-wrapper">
       <nav className="mobile-nav" aria-label="Mobile navigation">
-        <div className="mobile-nav-scroll-container">
-          <div className="mobile-nav-tabs">
-            {tabs.map(({ id, label, Icon }) => {
-              const isLocationTab = id === "location";
-              const isActive = isLocationTab
-                ? isLocationVisible
-                : drawerOpen && activeTab === id;
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  className={`mobile-nav-tab${isActive ? " is-active" : ""}`}
-                  onClick={() => onTabChange(id)}
-                  aria-current={!isLocationTab && activeTab === id ? "page" : undefined}
-                  aria-pressed={isLocationTab ? isLocationVisible : undefined}
-                >
-                  <Icon className="mobile-nav-icon" />
-                  <span className="mobile-nav-label">{label}</span>
-                </button>
-              );
-            })}
-          </div>
-          <div className="mobile-nav-fade" aria-hidden="true" />
+        <div className="mobile-nav-tabs">
+          {tabs.map(({ id, label, Icon }) => {
+            const isActive =
+              id === "export" ? activeStep === id : drawerOpen && activeStep === id;
+            return (
+              <button
+                key={id}
+                type="button"
+                className={`mobile-nav-tab${isActive ? " is-active" : ""}`}
+                onClick={() => onStepChange(id)}
+                aria-current={activeStep === id ? "page" : undefined}
+              >
+                <Icon className="mobile-nav-icon" />
+                <span className="mobile-nav-label">{label}</span>
+              </button>
+            );
+          })}
         </div>
       </nav>
-
-      <button
-        type="button"
-        className="mobile-nav-settings"
-        aria-label="Studio Controls"
-        disabled
-      >
-        <SettingsIcon className="mobile-nav-settings-icon" />
-      </button>
     </div>
   );
 }

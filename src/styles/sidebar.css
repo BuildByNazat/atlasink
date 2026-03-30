@@ -2,16 +2,65 @@
   display: none;
 }
 
+.shell-settings {
+  width: 100%;
+}
+
+.shell-settings__body {
+  display: grid;
+  gap: 20px;
+}
+
+.shell-section,
+.shell-subsection {
+  display: grid;
+  gap: 16px;
+}
+
+.shell-section__intro,
+.shell-subsection__header {
+  display: grid;
+  gap: 6px;
+}
+
+.shell-section__intro {
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(224, 228, 235, 0.82);
+  line-height: 1.55;
+}
+
+.shell-subsection__eyebrow {
+  margin: 0;
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(166, 173, 186, 0.82);
+}
+
+.shell-subsection__title {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  color: #f4efe7;
+}
+
 @media (min-width: 769px) {
   .studio-sidebar {
     grid-area: dnav;
     display: flex;
-    position: relative;
-    background: var(--surface-1);
-    border-right: 1px solid var(--line);
-    z-index: 40;
-    transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
     width: var(--sidebar-width);
+    min-width: 0;
+    background: rgba(15, 16, 21, 0.92);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 45;
+    transition: width 0.28s cubic-bezier(0.2, 0, 0, 1);
     overflow: hidden;
   }
 
@@ -19,75 +68,90 @@
     width: var(--sidebar-collapsed-width);
   }
 
-  /* ── 1. The Rail (Left icon column) ── */
   .sidebar-rail {
     flex: 0 0 var(--sidebar-nav-width);
     width: var(--sidebar-nav-width);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 8px 0;
-    border-right: 1px solid var(--line);
-    background: transparent;
-    z-index: 2;
+    align-items: center;
+    padding: 18px 0 16px;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
   }
 
-  /* When collapsed, no border inside the sidebar */
   .studio-sidebar.is-collapsed .sidebar-rail {
     border-right: none;
   }
 
+  .sidebar-rail-head,
+  .sidebar-nav-group,
+  .sidebar-nav-footer {
+    display: grid;
+    justify-items: center;
+  }
+
   .sidebar-nav-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
+    gap: 8px;
   }
 
   .sidebar-nav-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+    gap: 10px;
+  }
+
+  .sidebar-rail-badge {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(209, 167, 100, 0.76);
   }
 
   .sidebar-nav-tab {
     position: relative;
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    min-height: 52px;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 18px;
+    background: transparent;
+    color: rgba(180, 186, 196, 0.74);
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    padding: 0;
-    border: none;
-    border-radius: var(--radius-sm);
-    background: transparent;
-    color: var(--text-muted);
+    justify-content: center;
     cursor: pointer;
-    transition: all 0.15s ease;
-    -webkit-tap-highlight-color: transparent;
+    transition:
+      background 0.16s ease,
+      border-color 0.16s ease,
+      color 0.16s ease,
+      transform 0.16s ease;
   }
 
   .sidebar-nav-tab:hover {
-    background: var(--surface-2);
-    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.05);
+    color: #f4efe7;
   }
 
   .sidebar-nav-tab.is-active {
-    color: var(--text-main);
-    background: var(--surface-2);
+    background:
+      linear-gradient(180deg, rgba(209, 167, 100, 0.18), transparent),
+      rgba(255, 255, 255, 0.06);
+    border-color: rgba(209, 167, 100, 0.24);
+    color: #f4efe7;
   }
 
   .sidebar-nav-indicator {
     position: absolute;
-    left: 0;
+    left: -1px;
     top: 50%;
     transform: translateY(-50%) scaleY(0);
     width: 3px;
-    height: 20px;
-    border-radius: 0 4px 4px 0;
+    height: 26px;
+    border-radius: 0 999px 999px 0;
     background: var(--accent);
-    transition: transform 0.2s cubic-bezier(0.3, 0.7, 0, 1);
+    transition: transform 0.18s ease;
   }
 
   .sidebar-nav-tab.is-active .sidebar-nav-indicator {
@@ -98,90 +162,90 @@
     width: 18px;
     height: 18px;
     flex-shrink: 0;
-    margin: 0 13px; /* Center icon in 44px button: (44-18)/2 = 13 */
   }
 
-  /* The actual labels sit visually inside the right panel space but are part of the button logically */
   .sidebar-nav-label {
-    white-space: nowrap;
-    font-family: 'Spline Sans Mono', monospace;
-    font-size: 0.76rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    opacity: 1;
-    transition: opacity 0.2s;
+    display: none;
   }
 
-  /* In collapsed mode, hide labels for purely icon rail */
-  .studio-sidebar.is-collapsed .sidebar-nav-label {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .sidebar-legal {
-    width: 152px;
-    margin-left: 172px; /* Pushoff to the right */
-    position: absolute;
-    bottom: 24px;
-    left: 0;
-    font-family: 'Spline Sans Mono', monospace;
-    font-size: 0.64rem;
-    line-height: 1.4;
-    color: rgba(167, 175, 189, 0.4);
-    opacity: 1;
-    transition: opacity 0.2s ease;
-  }
-
-  .sidebar-legal a {
-    color: inherit;
-    text-decoration: underline;
-  }
-
-  .sidebar-legal a:hover {
-    color: var(--text-muted);
-  }
-
-  /* ── 2. The Panel Container (Right area) ── */
   .sidebar-panel-container {
     flex: 1 1 auto;
-    width: calc(var(--sidebar-width) - var(--sidebar-nav-width)); /* e.g. 168px */
-    height: 100%;
-    position: absolute;
-    left: var(--sidebar-nav-width);
-    transform: translateX(0);
-    opacity: 1;
-    background: var(--surface-2);
-    transition: opacity 0.25s, transform 0.3s cubic-bezier(0.2, 0, 0, 1);
-    /* Internal scrolling for settings panel */
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px 20px 24px;
     overflow-y: auto;
-    overflow-x: hidden;
     scrollbar-width: none;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent),
+      rgba(23, 25, 31, 0.94);
+    transition:
+      opacity 0.2s ease,
+      transform 0.24s ease;
   }
 
   .sidebar-panel-container::-webkit-scrollbar {
     display: none;
   }
 
-  /* When collapsed, panel container slides away */
   .studio-sidebar.is-collapsed .sidebar-panel-container {
-    transform: translateX(-16px);
     opacity: 0;
     pointer-events: none;
+    transform: translateX(-16px);
   }
 
-  /* ── 3. Reset SettingsPanel Chrome ── */
-  .sidebar-panel-container .settings-panel {
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    background: transparent;
-    width: 100%;
-    min-width: unset;
+  .sidebar-panel-head {
+    display: grid;
+    gap: 8px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .sidebar-panel-container .section-body-inner {
-    padding: 16px 12px;
-    overflow: visible;
+  .sidebar-panel-kicker {
+    margin: 0;
+    font-family: "Spline Sans Mono", monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(166, 173, 186, 0.78);
+  }
+
+  .sidebar-panel-title {
+    margin: 0;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 2rem;
+    line-height: 0.92;
+    letter-spacing: 0.05em;
+    color: #f4efe7;
+  }
+
+  .sidebar-panel-copy {
+    margin: 0;
+    color: rgba(224, 228, 235, 0.8);
+    line-height: 1.55;
+  }
+
+  .shell-settings--desktop .shell-subsection,
+  .shell-settings--desktop .shell-section--place {
+    padding: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .shell-settings--desktop .panel-block {
+    display: grid;
+    gap: 14px;
+  }
+
+  .shell-settings--desktop .panel-block > h2,
+  .shell-settings--desktop .map-settings-theme-part > h2,
+  .shell-settings--desktop .map-settings-layout-part > h2 {
+    display: none;
+  }
+
+  .shell-settings--desktop .section-body-inner {
+    padding: 0;
   }
 }

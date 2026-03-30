@@ -1,54 +1,80 @@
 import type { ReactNode } from "react";
 import {
+  LocationIcon,
   ThemeIcon,
-  LayoutIcon,
-  LayersIcon,
-  MarkersIcon,
   StyleIcon,
   SidebarCollapseIcon,
-  SidebarExpandIcon
+  SidebarExpandIcon,
 } from "@/shared/ui/Icons";
-import type { MobileTab } from "@/shared/ui/MobileNavBar";
 
-const tabs: {
-  id: MobileTab;
+type DesktopMode = "place" | "look" | "details";
+
+const modes: {
+  id: DesktopMode;
   label: string;
+  title: string;
+  description: string;
   Icon: React.ComponentType<{ className?: string }>;
 }[] = [
-  { id: "theme", label: "Style", Icon: ThemeIcon },
-  { id: "layout", label: "Layout", Icon: LayoutIcon },
-  { id: "style", label: "Typography", Icon: StyleIcon },
-  { id: "layers", label: "Terrain", Icon: LayersIcon },
-  { id: "markers", label: "Memories", Icon: MarkersIcon },
+  {
+    id: "place",
+    label: "Place",
+    title: "Place",
+    description: "Anchor the poster to a real location and precise coordinates.",
+    Icon: LocationIcon,
+  },
+  {
+    id: "look",
+    label: "Look",
+    title: "Look",
+    description: "Shape the palette, terrain, and print proportions together.",
+    Icon: ThemeIcon,
+  },
+  {
+    id: "details",
+    label: "Details",
+    title: "Details",
+    description: "Refine typography, memories, and the final authored layer.",
+    Icon: StyleIcon,
+  },
 ];
 
 interface StudioSidebarProps {
-  activeTab: MobileTab;
-  onTabChange: (tab: MobileTab) => void;
+  activeMode: DesktopMode;
+  onModeChange: (mode: DesktopMode) => void;
   collapsed: boolean;
   onToggleCollapse: () => void;
   children: ReactNode;
 }
 
 export default function StudioSidebar({
-  activeTab,
-  onTabChange,
+  activeMode,
+  onModeChange,
   collapsed,
   onToggleCollapse,
-  children
+  children,
 }: StudioSidebarProps) {
+  const activeMeta = modes.find(({ id }) => id === activeMode) ?? modes[0];
+
   return (
-    <aside className={`studio-sidebar${collapsed ? " is-collapsed" : ""}`} aria-label="Studio Controls">
+    <aside
+      className={`studio-sidebar${collapsed ? " is-collapsed" : ""}`}
+      aria-label="Studio controls"
+    >
       <div className="sidebar-rail">
+        <div className="sidebar-rail-head">
+          <span className="sidebar-rail-badge">AtlasInk</span>
+        </div>
+
         <div className="sidebar-nav-group">
-          {tabs.map(({ id, label, Icon }) => {
-            const isActive = activeTab === id;
+          {modes.map(({ id, label, Icon }) => {
+            const isActive = activeMode === id;
             return (
               <button
                 key={id}
                 type="button"
                 className={`sidebar-nav-tab${isActive ? " is-active" : ""}`}
-                onClick={() => onTabChange(id)}
+                onClick={() => onModeChange(id)}
                 title={collapsed ? label : undefined}
                 aria-label={label}
                 aria-current={isActive ? "page" : undefined}
@@ -60,7 +86,7 @@ export default function StudioSidebar({
             );
           })}
         </div>
-        
+
         <div className="sidebar-nav-footer">
           <button
             type="button"
@@ -76,16 +102,15 @@ export default function StudioSidebar({
             )}
             <span className="sidebar-nav-label">Collapse</span>
           </button>
-          {!collapsed && (
-            <div className="sidebar-legal">
-              AtlasInk™ Studio<br/>
-              Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OSM</a>
-            </div>
-          )}
         </div>
       </div>
 
       <div className="sidebar-panel-container">
+        <div className="sidebar-panel-head">
+          <p className="sidebar-panel-kicker">Original Map Print Studio</p>
+          <h2 className="sidebar-panel-title">{activeMeta.title}</h2>
+          <p className="sidebar-panel-copy">{activeMeta.description}</p>
+        </div>
         {children}
       </div>
     </aside>

@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { InfoIcon, DownloadIcon, LoaderIcon } from "@/shared/ui/Icons";
 import { useExport } from "@/features/export/application/useExport";
 import { usePosterContext } from "@/features/poster/ui/PosterContext";
-import SocialLinkGroup from "@/shared/ui/SocialLinkGroup";
 
 interface CommandBarProps {
   onAboutOpen: () => void;
@@ -22,11 +21,10 @@ export default function CommandBar({ onAboutOpen, children }: CommandBarProps) {
           alt="AtlasInk logo"
         />
         <h1 className="command-bar-wordmark">AtlasInk</h1>
+        <p className="command-bar-kicker">Original map prints</p>
       </div>
 
-      <div className="command-bar-center">
-        {children}
-      </div>
+      <div className="command-bar-center">{children}</div>
 
       <div className="command-bar-actions">
         <button
@@ -44,18 +42,15 @@ export default function CommandBar({ onAboutOpen, children }: CommandBarProps) {
           <span>Print Export</span>
         </button>
 
-        <div className="command-bar-secondary">
-          <SocialLinkGroup variant="header" />
-          <button
-            type="button"
-            className="command-icon-btn"
-            onClick={onAboutOpen}
-            aria-label="Studio Info"
-            title="Studio Info"
-          >
-            <InfoIcon />
-          </button>
-        </div>
+        <button
+          type="button"
+          className="command-icon-btn"
+          onClick={onAboutOpen}
+          aria-label="Studio Info"
+          title="Studio Info"
+        >
+          <InfoIcon />
+        </button>
       </div>
     </header>
   );

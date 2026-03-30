@@ -7,7 +7,17 @@ import SocialLinkGroup from "@/shared/ui/SocialLinkGroup";
 
 type ExportFormat = "png" | "pdf" | "svg";
 
-export default function MobileExportFab() {
+interface MobileExportFabProps {
+  isOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  showTrigger?: boolean;
+}
+
+export default function MobileExportFab({
+  isOpen: controlledOpen,
+  onOpenChange,
+  showTrigger = true,
+}: MobileExportFabProps) {
   const {
     handleDownloadPng,
     handleDownloadPdf,
@@ -16,9 +26,17 @@ export default function MobileExportFab() {
     dismissSupportPrompt,
   } = useExport();
   const { state } = usePosterContext();
-  const [isOpen, setIsOpen] = useState(false);
+  const [internalOpen, setInternalOpen] = useState(false);
   const [activeFormat, setActiveFormat] = useState<ExportFormat | null>(null);
   const [isTriggerVisible, setIsTriggerVisible] = useState(true);
+  const isOpen = controlledOpen ?? internalOpen;
+
+  const setIsOpen = (nextOpen: boolean) => {
+    if (controlledOpen === undefined) {
+      setInternalOpen(nextOpen);
+    }
+    onOpenChange?.(nextOpen);
+  };
 
   useEffect(() => {
     if (!state.isExporting) {
@@ -65,17 +83,19 @@ export default function MobileExportFab() {
 
   return (
     <>
-      <button
-        type="button"
-        className={`mobile-export-fab-trigger${isTriggerVisible ? "" : " is-hidden"}`}
-        aria-label="Print Export"
-        title="Print Export"
-        onClick={() => setIsOpen(true)}
-        tabIndex={isTriggerVisible ? 0 : -1}
-        aria-hidden={!isTriggerVisible}
-      >
-        <DownloadIcon />
-      </button>
+      {showTrigger ? (
+        <button
+          type="button"
+          className={`mobile-export-fab-trigger${isTriggerVisible ? "" : " is-hidden"}`}
+          aria-label="Print Export"
+          title="Print Export"
+          onClick={() => setIsOpen(true)}
+          tabIndex={isTriggerVisible ? 0 : -1}
+          aria-hidden={!isTriggerVisible}
+        >
+          <DownloadIcon />
+        </button>
+      ) : null}
 
       {isOpen ? (
         <div

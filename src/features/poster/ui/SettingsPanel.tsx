@@ -1,12 +1,9 @@
 import { useState } from "react";
 import { usePosterContext } from "@/features/poster/ui/PosterContext";
 import { useFormHandlers } from "@/features/poster/application/useFormHandlers";
-import { useLocationAutocomplete } from "@/features/location/application/useLocationAutocomplete";
-import { useCurrentLocation } from "@/features/location/application/useCurrentLocation";
-import { useMapSync } from "@/features/map/application/useMapSync";
-import type { MobileTab } from "@/shared/ui/MobileNavBar";
+import type { MobileStep } from "@/shared/ui/MobileNavBar";
+import PlaceComposer from "@/shared/ui/PlaceComposer";
 
-import LocationSection from "@/features/location/ui/LocationSection";
 import MapSettingsSection from "@/features/map/ui/MapSettingsSection";
 import LayersSection from "@/features/map/ui/LayersSection";
 import MarkersSection from "@/features/markers/ui/MarkersSection";
@@ -19,13 +16,18 @@ import {
   MAX_POSTER_CM,
   FONT_OPTIONS,
 } from "@/core/config";
-import type { SearchResult } from "@/features/location/domain/types";
+
+type ShellMode = Exclude<MobileStep, "export">;
+
+interface SettingsPanelProps {
+  mode: ShellMode;
+  surface: "desktop" | "mobile";
+}
 
 export default function SettingsPanel({
-  mobileTab,
-}: {
-  mobileTab?: MobileTab;
-}) {
+  mode,
+  surface,
+}: SettingsPanelProps) {
   const { state, selectedTheme } = usePosterContext();
   const {
     handleChange,
@@ -34,60 +36,35 @@ export default function SettingsPanel({
     handleLayoutChange,
     handleColorChange,
     handleResetColors,
-    handleLocationSelect,
-    handleClearLocation,
-    setLocationFocused,
     handleCreditsChange,
   } = useFormHandlers();
-  const { locationSuggestions, isLocationSearching, searchNow } = useLocationAutocomplete(
-    state.form.location,
-    state.isLocationFocused,
-  );
-  const { flyToLocation } = useMapSync();
-  const { handleUseCurrentLocation, isLocatingUser, locationPermissionMessage } =
-    useCurrentLocation(flyToLocation);
 
   const [isColorEditorActive, setIsColorEditorActive] = useState(false);
 
-  // When color editor is active, auxiliary settings are paused
-  const isAuxEditorActive = isColorEditorActive;
-  const showLocationSuggestions =
-    state.isLocationFocused && locationSuggestions.length > 0;
-
-  const onLocationSelect = (location: SearchResult) => {
-    handleLocationSelect(location);
-    flyToLocation(location.lat, location.lon);
-  };
-
   return (
-    <form className="settings-panel" onSubmit={(e) => e.preventDefault()}>
-      <div className="mobile-section mobile-section--location">
-        <div className="section-body-inner">
-          {!isColorEditorActive ? (
-            <LocationSection
-              form={state.form}
-              onChange={handleChange}
-              onLocationFocus={() => setLocationFocused(true)}
-              onLocationBlur={() => setLocationFocused(false)}
-              searchNow={searchNow}
-              showLocationSuggestions={showLocationSuggestions}
-              locationSuggestions={locationSuggestions}
-              isLocationSearching={isLocationSearching}
-              onLocationSelect={onLocationSelect}
-              onClearLocation={handleClearLocation}
-              onUseCurrentLocation={handleUseCurrentLocation}
-              isLocatingUser={isLocatingUser}
-              locationPermissionMessage={locationPermissionMessage}
+    <form
+      className={`shell-settings shell-settings--${surface}`}
+      onSubmit={(event) => event.preventDefault()}
+    >
+      <div className="shell-settings__body">
+        {mode === "place" ? (
+          <section className="shell-section shell-section--place">
+            <PlaceComposer
+              variant={surface === "desktop" ? "inspector" : "mobile"}
             />
-          ) : null}
-        </div>
-      </div>
+          </section>
+        ) : null}
 
-      <div className="mobile-section mobile-section--theme-settings">
-        <div className="section-body-inner">
-          {!isColorEditorActive ? (
+        {mode === "look" ? (
+          <section className="shell-section shell-section--look">
+            {!isColorEditorActive ? (
+              <p className="shell-section__intro">
+                Pick the print language first. Theme, terrain, and layout belong
+                together in AtlasInk because they define the poster at a glance.
+              </p>
+            ) : null}
             <MapSettingsSection
-              activeMobileTab={mobileTab}
+              activeMobileTab={mode}
               form={state.form}
               onChange={handleChange}
               onNumericFieldBlur={handleNumericFieldBlur}
@@ -103,68 +80,59 @@ export default function SettingsPanel({
               onResetColors={handleResetColors}
               onColorEditorActiveChange={setIsColorEditorActive}
             />
-          ) : null}
-        </div>
-      </div>
+            {!isColorEditorActive ? (
+              <div className="shell-subsection">
+                <div className="shell-subsection__header">
+                  <p className="shell-subsection__eyebrow">Terrain</p>
+                  <h3 className="shell-subsection__title">
+                    Decide what the map speaks with.
+                  </h3>
+                </div>
+                <LayersSection
+                  form={state.form}
+                  onChange={handleChange}
+                  minPosterCm={MIN_POSTER_CM}
+                  maxPosterCm={MAX_POSTER_CM}
+                  onNumericFieldBlur={handleNumericFieldBlur}
+                />
+              </div>
+            ) : null}
+          </section>
+        ) : null}
 
-      <div className="mobile-section mobile-section--layout-settings">
-        <div className="section-body-inner">
-          {!isColorEditorActive ? (
-            <MapSettingsSection
-              activeMobileTab={mobileTab}
-              form={state.form}
-              onChange={handleChange}
-              onNumericFieldBlur={handleNumericFieldBlur}
-              onThemeChange={handleThemeChange}
-              onLayoutChange={handleLayoutChange}
-              selectedTheme={selectedTheme}
-              themeOptions={themeOptions}
-              layoutGroups={layoutGroups}
-              minPosterCm={MIN_POSTER_CM}
-              maxPosterCm={MAX_POSTER_CM}
-              customColors={state.customColors}
-              onColorChange={handleColorChange}
-              onResetColors={handleResetColors}
-              onColorEditorActiveChange={setIsColorEditorActive}
-            />
-          ) : null}
-        </div>
-      </div>
+        {mode === "details" ? (
+          <section className="shell-section shell-section--details">
+            <div className="shell-subsection">
+              <div className="shell-subsection__header">
+                <p className="shell-subsection__eyebrow">Lettering</p>
+                <h3 className="shell-subsection__title">
+                  Tune labels, credits, and the authored voice of the print.
+                </h3>
+              </div>
+              <TypographySection
+                form={state.form}
+                onChange={handleChange}
+                fontOptions={FONT_OPTIONS}
+                onCreditsChange={handleCreditsChange}
+              />
+            </div>
 
-      <div className="mobile-section mobile-section--layers">
-        <div className="section-body-inner">
-          {!isAuxEditorActive ? (
-            <LayersSection
-              form={state.form}
-              onChange={handleChange}
-              minPosterCm={MIN_POSTER_CM}
-              maxPosterCm={MAX_POSTER_CM}
-              onNumericFieldBlur={handleNumericFieldBlur}
-            />
-          ) : null}
-        </div>
-      </div>
+            <div className="shell-subsection">
+              <div className="shell-subsection__header">
+                <p className="shell-subsection__eyebrow">Memories</p>
+                <h3 className="shell-subsection__title">
+                  Add pins and refine the personal layer of the composition.
+                </h3>
+              </div>
+              <MarkersSection />
+            </div>
+          </section>
+        ) : null}
 
-      <div className="mobile-section mobile-section--markers">
-        <div className="section-body-inner">
-          {!isColorEditorActive ? <MarkersSection /> : null}
-        </div>
+        {state.error && !isColorEditorActive ? (
+          <p className="error">{state.error}</p>
+        ) : null}
       </div>
-
-      <div className="mobile-section mobile-section--style">
-        <div className="section-body-inner">
-          {!isAuxEditorActive ? (
-            <TypographySection
-              form={state.form}
-              onChange={handleChange}
-              fontOptions={FONT_OPTIONS}
-              onCreditsChange={handleCreditsChange}
-            />
-          ) : null}
-        </div>
-      </div>
-
-      {!isAuxEditorActive && state.error ? <p className="error">{state.error}</p> : null}
     </form>
   );
 }

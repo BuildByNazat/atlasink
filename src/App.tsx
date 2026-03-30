@@ -8,11 +8,12 @@ import {
 import CommandBar from "@/shared/ui/CommandBar";
 import StudioSidebar from "@/shared/ui/StudioSidebar";
 import PreviewPanel from "@/features/poster/ui/PreviewPanel";
-import MobileNavBar, { type MobileTab } from "@/shared/ui/MobileNavBar";
+import MobileNavBar, { type MobileStep } from "@/shared/ui/MobileNavBar";
 import InstallPrompt from "@/features/install/ui/InstallPrompt";
 import { useSwipeDown } from "@/shared/hooks/useSwipeDown";
 import StartupLocationModal from "@/features/location/ui/StartupLocationModal";
 import { CheckIcon } from "@/shared/ui/Icons";
+import PlaceComposer from "@/shared/ui/PlaceComposer";
 
 const AboutModal = lazy(() => import("@/shared/ui/AboutModal"));
 const SettingsPanel = lazy(() => import("@/features/poster/ui/SettingsPanel"));
@@ -20,13 +21,15 @@ const AnnouncementModal = lazy(
   () => import("@/features/updates/ui/AnnouncementModal"),
 );
 const MobileExportFab = lazy(() => import("@/features/export/ui/MobileExportFab"));
-const DesktopLocationBar = lazy(() => import("@/shared/ui/DesktopLocationBar"));
+
+type DesktopMode = "place" | "look" | "details";
+type MobileTaskStep = Exclude<MobileStep, "export">;
 
 function SettingsDrawer({
-  mobileTab,
+  mobileStep,
   onClose,
 }: {
-  mobileTab: MobileTab;
+  mobileStep: MobileTaskStep;
   onClose: () => void;
 }) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -35,7 +38,7 @@ function SettingsDrawer({
   });
 
   return (
-    <div className="mobile-drawer" role="dialog" aria-label="Settings">
+    <div className="mobile-drawer" role="dialog" aria-label="Active task">
       <div
         className="mobile-drawer-backdrop"
         onClick={onClose}
@@ -44,7 +47,7 @@ function SettingsDrawer({
       <div
         className={`mobile-drawer-sheet${isExpanded ? " is-expanded" : ""}`}
         ref={sheetRef}
-        data-mobile-tab={mobileTab}
+        data-mobile-step={mobileStep}
       >
         <div
           className="mobile-drawer-handle"
@@ -53,7 +56,7 @@ function SettingsDrawer({
           {...handleProps}
         />
         <div className="mobile-drawer-content">
-          <SettingsPanel mobileTab={mobileTab} />
+          <SettingsPanel mode={mobileStep} surface="mobile" />
         </div>
       </div>
     </div>
@@ -69,23 +72,21 @@ function AppShell() {
       : null;
 
   // Mobile state
-  const [mobileTab, setMobileTab] = useState<MobileTab>("theme");
+  const [mobileStep, setMobileStep] = useState<MobileStep>("look");
+  const [lastMobileTaskStep, setLastMobileTaskStep] =
+    useState<MobileTaskStep>("look");
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
-  const [mobileLocationRowVisible, setMobileLocationRowVisible] =
-    useState(true);
+  const [mobileExportOpen, setMobileExportOpen] = useState(false);
   const [isMobileViewport, setIsMobileViewport] = useState(false);
 
   // Desktop state
-  const [desktopTab, setDesktopTab] = useState<MobileTab>("theme");
-  const [desktopLocationRowVisible, setDesktopLocationRowVisible] =
-    useState(true);
+  const [desktopMode, setDesktopMode] = useState<DesktopMode>("look");
   const [aboutOpen, setAboutOpen] = useState(false);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   useEffect(() => {
     const preload = () => {
       void import("@/features/poster/ui/SettingsPanel");
-      void import("@/shared/ui/DesktopLocationBar");
 
       void import("@/features/export/ui/MobileExportFab");
       void import("@/features/updates/ui/AnnouncementModal");
@@ -136,23 +137,27 @@ function AppShell() {
     };
   }, [mobileDrawerOpen]);
 
-  const handleMobileTabChange = (tab: MobileTab) => {
-    if (tab === "location") {
-      setMobileLocationRowVisible((isVisible) => !isVisible);
+  const handleMobileStepChange = (step: MobileStep) => {
+    if (step === "export") {
+      setMobileStep("export");
       setMobileDrawerOpen(false);
+      setMobileExportOpen(true);
       return;
     }
 
-    if (tab === mobileTab && mobileDrawerOpen) {
+    setLastMobileTaskStep(step);
+    setMobileExportOpen(false);
+
+    if (step === mobileStep && mobileDrawerOpen) {
       setMobileDrawerOpen(false);
     } else {
-      setMobileTab(tab);
+      setMobileStep(step);
       setMobileDrawerOpen(true);
     }
   };
 
-  const handleDesktopTabChange = (tab: MobileTab) => {
-    setDesktopTab(tab);
+  const handleDesktopModeChange = (mode: DesktopMode) => {
+    setDesktopMode(mode);
     if (sidebarCollapsed) {
       setSidebarCollapsed(false);
     }
@@ -179,38 +184,26 @@ function AppShell() {
   return (
     <div
       className="app-shell"
-      data-mobile-tab={mobileTab}
-      data-desktop-tab={desktopTab}
+      data-mobile-step={mobileStep}
+      data-desktop-mode={desktopMode}
     >
       <CommandBar onAboutOpen={() => setAboutOpen(true)}>
-        <div className={`desktop-location-row-wrap${desktopLocationRowVisible ? "" : " is-hidden"}`}>
-          <Suspense fallback={null}>
-            <DesktopLocationBar />
-          </Suspense>
-        </div>
+        <PlaceComposer variant="masthead" />
       </CommandBar>
 
       <InstallPrompt />
       <StartupLocationModal />
 
       <StudioSidebar
-        activeTab={desktopTab}
-        onTabChange={handleDesktopTabChange}
+        activeMode={desktopMode}
+        onModeChange={handleDesktopModeChange}
         collapsed={sidebarCollapsed}
         onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
       >
         <Suspense fallback={null}>
-          <SettingsPanel mobileTab={desktopTab} />
+          <SettingsPanel mode={desktopMode} surface="desktop" />
         </Suspense>
       </StudioSidebar>
-
-      <div
-        className={`mobile-location-row-wrap${mobileLocationRowVisible ? "" : " is-hidden"}`}
-      >
-        <Suspense fallback={null}>
-          <DesktopLocationBar />
-        </Suspense>
-      </div>
       {isMobileViewport && isMarkerEditorActive && activeMarker ? (
         <div
           className="mobile-marker-size-bar"
@@ -241,9 +234,9 @@ function AppShell() {
 
       <PreviewPanel />
 
-      {mobileDrawerOpen ? (
+      {mobileDrawerOpen && mobileStep !== "export" ? (
         <SettingsDrawer
-          mobileTab={mobileTab}
+          mobileStep={mobileStep}
           onClose={() => setMobileDrawerOpen(false)}
         />
       ) : null}
@@ -264,13 +257,21 @@ function AppShell() {
       ) : null}
 
       <MobileNavBar
-        activeTab={mobileTab}
+        activeStep={mobileStep}
         drawerOpen={mobileDrawerOpen}
-        isLocationVisible={mobileLocationRowVisible}
-        onTabChange={handleMobileTabChange}
+        onStepChange={handleMobileStepChange}
       />
       <Suspense fallback={null}>
-        <MobileExportFab />
+        <MobileExportFab
+          isOpen={mobileExportOpen}
+          onOpenChange={(open) => {
+            setMobileExportOpen(open);
+            if (!open && mobileStep === "export") {
+              setMobileStep(lastMobileTaskStep);
+            }
+          }}
+          showTrigger={false}
+        />
       </Suspense>
 
       <Suspense fallback={null}>

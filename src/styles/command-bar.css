@@ -2,86 +2,104 @@
   grid-area: dheader;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: var(--command-bar-height, 52px);
-  padding: 0 16px;
-  background: var(--surface-1);
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.28);
-  z-index: 50;
-  gap: 12px;
-  flex-shrink: 0;
+  gap: 18px;
+  height: var(--command-bar-height, 64px);
+  padding: 0 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent),
+    rgba(10, 11, 14, 0.88);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  z-index: 60;
 }
 
-/* ── 1. Brand Section (Left) ── */
 .command-bar-brand {
-  display: flex;
+  display: grid;
   align-items: center;
-  gap: 10px;
+  grid-template-columns: auto auto;
+  grid-template-areas:
+    "logo wordmark"
+    "logo kicker";
+  column-gap: 12px;
+  row-gap: 2px;
   flex: 0 0 auto;
+  min-width: 200px;
 }
 
 .command-bar-logo {
-  width: 24px;
+  grid-area: logo;
+  width: 26px;
   height: auto;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45));
 }
 
 .command-bar-wordmark {
+  grid-area: wordmark;
   margin: 0;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.4rem;
-  line-height: 1;
-  letter-spacing: 0.03em;
-  color: var(--text-main);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.6rem;
+  line-height: 0.92;
+  letter-spacing: 0.05em;
+  color: #f5efe5;
 }
 
-/* ── 2. Center: Location Pill ── */
+.command-bar-kicker {
+  grid-area: kicker;
+  margin: 0;
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 0.62rem;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(198, 204, 214, 0.7);
+}
+
 .command-bar-center {
   flex: 1 1 auto;
-  display: none; /* Hidden by default on mobile */
-  justify-content: center;
-  max-width: 480px;
+  min-width: 0;
+  display: none;
 }
 
-.command-bar-center > * {
-  width: 100%;
-}
-
-/* ── 3. Actions Section (Right) ── */
 .command-bar-actions {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 10px;
   flex: 0 0 auto;
 }
 
-/* Primary Export Button in Command Bar */
 .command-export-btn {
-  display: none; /* Hidden by default on mobile */
+  display: none;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border: 1px solid var(--accent-border);
-  border-radius: var(--radius-sm);
-  background: var(--surface-3);
-  color: var(--accent);
-  font-family: 'Spline Sans Mono', monospace;
+  gap: 9px;
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1px solid rgba(239, 223, 195, 0.28);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(222, 196, 157, 0.18), rgba(116, 88, 53, 0.18)),
+    rgba(243, 236, 226, 0.95);
+  color: #1d1915;
+  font-family: "Spline Sans Mono", monospace;
   font-size: 0.72rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
-  transition: all 0.15s ease;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  transition:
+    background 0.16s ease,
+    transform 0.16s ease,
+    border-color 0.16s ease;
 }
 
 .command-export-btn:not(:disabled):hover {
-  background: var(--surface-2);
-  border-color: var(--accent);
-  color: var(--text-main);
+  background:
+    linear-gradient(135deg, rgba(222, 196, 157, 0.22), rgba(116, 88, 53, 0.2)),
+    rgba(248, 242, 234, 0.98);
+  border-color: rgba(239, 223, 195, 0.45);
 }
 
 .command-export-btn:disabled {
@@ -99,59 +117,163 @@
   animation: spin 0.9s linear infinite;
 }
 
-/* Secondary Actions (Info, GitHub) */
-.command-bar-secondary {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-left: 4px;
-}
-
 .command-icon-btn {
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: transparent;
-  color: var(--text-muted);
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  color: rgba(228, 230, 235, 0.8);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition:
+    background 0.16s ease,
+    border-color 0.16s ease,
+    color 0.16s ease;
 }
 
 .command-icon-btn svg {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
 }
 
 .command-icon-btn:hover {
-  background: var(--surface-2);
-  border-color: var(--accent-border);
-  color: var(--accent);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+  color: #f4efe7;
+}
+
+.place-composer {
+  width: 100%;
+}
+
+.place-composer__header {
+  display: grid;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.place-composer__eyebrow {
+  margin: 0;
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(166, 173, 186, 0.86);
+}
+
+.place-composer__title {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+  color: #f4efe7;
+}
+
+.place-composer__search-stack {
+  position: relative;
+}
+
+.place-composer__search-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.place-composer__search-icon {
+  width: 18px;
+  height: 18px;
+  color: rgba(162, 169, 181, 0.72);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.place-composer__icon-btn {
+  width: 42px;
+  min-width: 42px;
+  min-height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(237, 239, 243, 0.86);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.place-composer__icon-btn.is-locating .place-composer__locate-icon {
+  animation: desktop-location-spin 0.9s linear infinite;
+}
+
+.place-composer__field-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.place-composer__field-label svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.65;
+}
+
+.place-composer__coords {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.place-composer--masthead {
+  max-width: 560px;
+}
+
+.place-composer--masthead .place-composer__search-row {
+  padding: 5px 6px 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.place-composer--masthead .location-input-wrap input {
+  min-height: 38px;
+  margin-top: 0;
+  padding: 6px 32px 6px 0;
+  border: none;
+  background: transparent;
+  color: #f4efe7;
+  font-family: "Spline Sans Mono", monospace;
+  font-size: 0.78rem;
+  box-shadow: none;
+}
+
+.place-composer--masthead .location-input-wrap input:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.place-composer--masthead .location-clear-btn {
+  right: 2px;
+  width: 24px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.place-composer--masthead .location-suggestions {
+  top: calc(100% + 10px);
 }
 
 @media (min-width: 769px) {
-
-  .command-bar-brand {
-    width: 204px;
-  }
-
   .command-bar-center {
-    display: flex;
-  }
-
-  .command-bar-actions {
-    width: 204px;
+    display: block;
   }
 
   .command-export-btn {
     display: inline-flex;
-  }
-
-  .command-bar-secondary {
-    padding-left: 12px;
-    border-left: 1px solid var(--line);
   }
 }

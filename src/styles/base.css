@@ -1,51 +1,47 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap");
 
 :root {
-  /* ── Core Palette ── */
-  --bg-color: #0F1115;
-  --panel-bg: #171A21;
-  --soft-panel: #1E232D;
-  --text-main: #F5F1E8;
-  --text-muted: #A7AFBD;
-  --accent-gold: #C9A86A;
-  --accent-slate: #6F8196;
-  --success: #7FA37C;
-  --error: #D07B7B;
+  --bg-color: #111216;
+  --panel-bg: #181b21;
+  --soft-panel: #20242c;
+  --paper-panel: #f1e6d2;
+  --text-main: #f4efe7;
+  --text-muted: #a6adba;
+  --accent-gold: #d1a764;
+  --accent-slate: #8f98aa;
+  --accent-cyan: #7db5c9;
+  --success: #86aa86;
+  --error: #d78c7f;
 
-  /* ── Existing colour tokens (re-mapped) ── */
   --ink: var(--text-main);
   --panel: var(--panel-bg);
   --line: rgba(255, 255, 255, 0.08);
-  --strong-line: rgba(255, 255, 255, 0.16);
+  --strong-line: rgba(255, 255, 255, 0.18);
   --positive: var(--success);
   --negative: var(--error);
 
-  /* ── Layout dimensions ── */
-  --command-bar-height: 52px;
-  --sidebar-width: 220px;
-  --sidebar-collapsed-width: 52px;
-  --sidebar-nav-width: 52px;       /* icon-only rail within the sidebar */
+  --command-bar-height: 64px;
+  --sidebar-width: 400px;
+  --sidebar-collapsed-width: 76px;
+  --sidebar-nav-width: 76px;
 
-  /* ── Layered surface backgrounds ── */
-  --surface-1: var(--bg-color);
-  --surface-2: var(--panel-bg);
-  --surface-3: var(--soft-panel);
+  --surface-1: #111216;
+  --surface-2: #171a20;
+  --surface-3: #21262e;
+  --surface-4: #292f39;
 
-  /* ── Border radii scale ── */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 20px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
 
-  /* ── Shadows ── */
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.22);
+  --shadow-md: 0 22px 44px rgba(0, 0, 0, 0.34);
+  --shadow-lg: 0 32px 72px rgba(0, 0, 0, 0.42);
 
-  /* ── Brand accent (sidebar active state, focus rings) ── */
   --accent: var(--accent-gold);
-  --accent-dim: rgba(201, 168, 106, 0.16);
-  --accent-border: rgba(201, 168, 106, 0.45);
+  --accent-dim: rgba(209, 167, 100, 0.16);
+  --accent-border: rgba(209, 167, 100, 0.42);
 }
 
 *,
@@ -59,7 +55,9 @@ body {
   margin: 0;
   color: var(--ink);
   font-family: "Instrument Sans", sans-serif;
-  background-color: var(--bg-color);
+  background:
+    radial-gradient(circle at top, rgba(209, 167, 100, 0.08), transparent 28%),
+    linear-gradient(180deg, #15161b 0%, #101115 100%);
   min-height: 100vh;
   min-height: 100dvh;
   width: 100%;
@@ -69,5 +67,5 @@ body {
 #root {
   min-height: 100vh;
   min-height: 100dvh;
-  background-color: var(--bg-color);
+  background: transparent;
 }
