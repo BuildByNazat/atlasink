@@ -1,0 +1,205 @@
+.studio-sidebar {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .studio-sidebar {
+    grid-area: dnav;
+    display: flex;
+    position: relative;
+    background: var(--surface-1);
+    border-right: 1px solid var(--line);
+    z-index: 40;
+    transition: width 0.3s cubic-bezier(0.2, 0, 0, 1);
+    width: var(--sidebar-width);
+    overflow: hidden;
+  }
+
+  .studio-sidebar.is-collapsed {
+    width: var(--sidebar-collapsed-width);
+  }
+
+  /* ── 1. The Rail (Left icon column) ── */
+  .sidebar-rail {
+    flex: 0 0 var(--sidebar-nav-width);
+    width: var(--sidebar-nav-width);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-right: 1px solid var(--line);
+    background: transparent;
+    z-index: 2;
+  }
+
+  /* When collapsed, no border inside the sidebar */
+  .studio-sidebar.is-collapsed .sidebar-rail {
+    border-right: none;
+  }
+
+  .sidebar-nav-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .sidebar-nav-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sidebar-nav-tab {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .sidebar-nav-tab:hover {
+    background: var(--surface-2);
+    color: var(--text-main);
+  }
+
+  .sidebar-nav-tab.is-active {
+    color: var(--text-main);
+    background: var(--surface-2);
+  }
+
+  .sidebar-nav-indicator {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%) scaleY(0);
+    width: 3px;
+    height: 20px;
+    border-radius: 0 4px 4px 0;
+    background: var(--accent);
+    transition: transform 0.2s cubic-bezier(0.3, 0.7, 0, 1);
+  }
+
+  .sidebar-nav-tab.is-active .sidebar-nav-indicator {
+    transform: translateY(-50%) scaleY(1);
+  }
+
+  .sidebar-nav-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin: 0 13px; /* Center icon in 44px button: (44-18)/2 = 13 */
+  }
+
+  /* The actual labels sit visually inside the right panel space but are part of the button logically */
+  .sidebar-nav-label {
+    white-space: nowrap;
+    font-family: 'Spline Sans Mono', monospace;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+
+  /* In collapsed mode, hide labels for purely icon rail */
+  .studio-sidebar.is-collapsed .sidebar-nav-label {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .sidebar-legal {
+    width: 152px;
+    margin-left: 172px; /* Pushoff to the right */
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    font-family: 'Spline Sans Mono', monospace;
+    font-size: 0.64rem;
+    line-height: 1.4;
+    color: rgba(167, 175, 189, 0.4);
+    opacity: 1;
+    transition: opacity 0.2s ease;
+  }
+
+  .sidebar-legal a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  .sidebar-legal a:hover {
+    color: var(--text-muted);
+  }
+
+  /* ── 2. The Panel Container (Right area) ── */
+  .sidebar-panel-container {
+    flex: 1 1 auto;
+    width: calc(var(--sidebar-width) - var(--sidebar-nav-width)); /* e.g. 168px */
+    height: 100%;
+    position: absolute;
+    left: var(--sidebar-nav-width);
+    transform: translateX(0);
+    opacity: 1;
+    background: var(--surface-2);
+    transition: opacity 0.25s, transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+    /* Internal scrolling for settings panel */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+  }
+
+  .sidebar-panel-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* When collapsed, panel container slides away */
+  .studio-sidebar.is-collapsed .sidebar-panel-container {
+    transform: translateX(-16px);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* ── 3. Reset SettingsPanel Chrome ── */
+  .sidebar-panel-container .settings-panel {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    width: 100%;
+    min-width: unset;
+  }
+
+  .sidebar-panel-container .accordion-item {
+    border-bottom: none;
+    background: transparent;
+  }
+
+  .sidebar-panel-container .accordion-header {
+    display: none;
+  }
+
+  .sidebar-panel-container .accordion-body {
+    display: block !important;
+    grid-template-rows: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    transition: none !important;
+  }
+
+  .sidebar-panel-container .accordion-body-inner {
+    padding: 16px 12px;
+    overflow: visible;
+  }
+}

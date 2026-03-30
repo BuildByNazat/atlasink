@@ -1,0 +1,157 @@
+.command-bar {
+  grid-area: dheader;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--command-bar-height, 52px);
+  padding: 0 16px;
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 12px rgba(0, 0, 0, 0.28);
+  z-index: 50;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* ── 1. Brand Section (Left) ── */
+.command-bar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.command-bar-logo {
+  width: 24px;
+  height: auto;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
+}
+
+.command-bar-wordmark {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  color: var(--text-main);
+}
+
+/* ── 2. Center: Location Pill ── */
+.command-bar-center {
+  flex: 1 1 auto;
+  display: none; /* Hidden by default on mobile */
+  justify-content: center;
+  max-width: 480px;
+}
+
+.command-bar-center > * {
+  width: 100%;
+}
+
+/* ── 3. Actions Section (Right) ── */
+.command-bar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+
+/* Primary Export Button in Command Bar */
+.command-export-btn {
+  display: none; /* Hidden by default on mobile */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-sm);
+  background: var(--surface-3);
+  color: var(--accent);
+  font-family: 'Spline Sans Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.15s ease;
+}
+
+.command-export-btn:not(:disabled):hover {
+  background: var(--surface-2);
+  border-color: var(--accent);
+  color: var(--text-main);
+}
+
+.command-export-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.command-export-btn-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.command-export-btn-icon.is-spinning {
+  animation: spin 0.9s linear infinite;
+}
+
+/* Secondary Actions (Info, GitHub) */
+.command-bar-secondary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 4px;
+}
+
+.command-icon-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.command-icon-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.command-icon-btn:hover {
+  background: var(--surface-2);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+@media (min-width: 769px) {
+
+  .command-bar-brand {
+    width: 204px;
+  }
+
+  .command-bar-center {
+    display: flex;
+  }
+
+  .command-bar-actions {
+    width: 204px;
+  }
+
+  .command-export-btn {
+    display: inline-flex;
+  }
+
+  .command-bar-secondary {
+    padding-left: 12px;
+    border-left: 1px solid var(--line);
+  }
+}

@@ -49,15 +49,15 @@
   /* ── App shell becomes a full-screen CSS grid ── */
 
   .app-shell {
-    position: relative; /* for absolute-positioned settings slide */
+    position: relative;
     max-width: 100%;
     padding: 0;
     margin: 0;
     height: 100vh;
     overflow: hidden;
     display: grid;
-    grid-template-columns: 64px 1fr;
-    grid-template-rows: 62px 1fr;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: var(--command-bar-height) 1fr;
     grid-template-areas:
       "dheader dheader"
       "dnav    dmap";
@@ -71,254 +71,11 @@
 
   /* ── Desktop Header ── */
 
-  .general-header {
-    grid-area: dheader;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0;
-    padding: 0 20px;
-    background: rgba(9, 16, 24, 0.97);
-    border-bottom: 1px solid rgba(146, 176, 200, 0.12);
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.28);
-    z-index: 50;
-    gap: 14px;
-    flex-shrink: 0;
-  }
 
-  .desktop-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-
-  .desktop-brand-logo {
-    width: 30px;
-    height: auto;
-    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
-  }
-
-  .desktop-brand-copy {
-    display: flex;
-    align-items: baseline;
-    gap: 11px;
-  }
-
-  .desktop-brand-title {
-    margin: 0;
-    font-family: "Bebas Neue", sans-serif;
-    font-size: 1.62rem;
-    line-height: 1;
-    letter-spacing: 0.03em;
-    color: #ecf5ff;
-  }
-
-  .desktop-brand-kicker {
-    margin: 0;
-    font-family: "Spline Sans Mono", monospace;
-    font-size: 0.67rem;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: rgba(184, 212, 232, 0.5);
-  }
-
-  .general-header-actions {
-    margin-left: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .desktop-header-social {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-right: 4px;
-  }
-
-  .general-header-social-btn {
-    width: 34px;
-    height: 34px;
-    border: 1px solid rgba(146, 176, 200, 0.2);
-    border-radius: 9px;
-    background: rgba(10, 20, 31, 0.78);
-    color: rgba(195, 220, 240, 0.86);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition:
-      background 0.15s,
-      border-color 0.15s,
-      color 0.15s;
-  }
-
-  .general-header-social-btn svg {
-    width: 16px;
-    height: 16px;
-  }
-
-  .general-header-social-btn:hover,
-  .general-header-social-btn:focus-visible {
-    background: rgba(94, 174, 212, 0.1);
-    border-color: rgba(94, 174, 212, 0.5);
-    color: #c8e8f8;
-  }
-
-  .general-header-social-btn--github {
-    width: auto;
-    min-width: 90px;
-    padding: 0 10px;
-    gap: 7px;
-  }
-
-  .general-header-github-stars {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-family: "Spline Sans Mono", monospace;
-    font-size: 0.67rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-  }
-
-  .general-header-github-stars-count {
-    transform: translateY(2px);
-  }
-
-  .general-header-github-stars svg {
-    width: 12px;
-    height: 12px;
-  }
-
-  .general-header-text-btn {
-    transition:
-      background 0.15s,
-      border-color 0.15s,
-      color 0.15s;
-  }
-
-  .general-header-text-btn:hover:not(:disabled) {
-    transform: none;
-    filter: none;
-    background: rgba(94, 174, 212, 0.1);
-    border-color: rgba(94, 174, 212, 0.5);
-    color: #c8e8f8;
-  }
-
-  .general-header-btn-label {
-    display: inline;
-  }
-
-  .general-header-btn-icon {
-    display: none;
-  }
-
-  /* ── Desktop vertical nav bar ── */
-
-  .desktop-nav-bar {
-    grid-area: dnav;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 8px 0;
-    gap: 2px;
-    background: rgba(10, 20, 31, 0.98);
-    border-right: 1px solid rgba(146, 176, 200, 0.1);
-    overflow-y: auto;
-    scrollbar-width: none;
-    z-index: 40;
-  }
-
-  .desktop-nav-bar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .desktop-nav-tab {
-    flex-shrink: 0;
-    width: 52px;
-    height: 52px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 3px;
-    padding: 4px 0;
-    border: none;
-    border-radius: 10px;
-    background: transparent;
-    color: rgba(180, 205, 225, 0.42);
-    font-size: 0.5rem;
-    font-weight: 600;
-    font-family: "Spline Sans Mono", monospace;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    cursor: pointer;
-    transition:
-      background 0.15s,
-      color 0.15s;
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .desktop-nav-tab:hover {
-    transform: none;
-    filter: none;
-    background: rgba(94, 174, 212, 0.1);
-    color: rgba(180, 205, 225, 0.72);
-  }
-
-  .desktop-nav-tab.is-active {
-    background: rgba(55, 171, 203, 0.16);
-    color: #7dd8f0;
-  }
-
-  .desktop-nav-icon {
-    width: 18px;
-    height: 18px;
-  }
-
-  .desktop-nav-label {
-    line-height: 1;
-    font-size: 0.48rem;
-  }
-
-  .desktop-nav-tab--settings {
-    margin-top: auto;
-    margin-bottom: 6px;
-    cursor: default;
-  }
-
-  .desktop-nav-tab--settings:disabled {
-    opacity: 1;
-  }
 
   /* ── Desktop left panel: floating fixed container (location bar + settings) ── */
 
-  .desktop-left-panel {
-    display: block;
-    position: fixed;
-    top: 124px;
-    left: 82px; /* 64px nav + 18px gap */
-    width: 356px;
-    z-index: 45;
-    pointer-events: auto;
-    max-height: calc(100vh - 196px);
-  }
 
-  .desktop-location-row-wrap {
-    display: block;
-    position: fixed;
-    top: 76px;
-    left: 82px; /* 64px nav + 18px gap */
-    width: 440px;
-    z-index: 46;
-    pointer-events: none;
-  }
-
-  .desktop-location-row-wrap.is-hidden {
-    display: none;
-  }
 
   /* ── Floating location bar ── */
 
@@ -333,14 +90,12 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    background: rgba(20, 36, 52, 0.97);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(171, 201, 224, 0.34);
-    border-radius: 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
     width: 100%;
     padding: 1px 6px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
   }
 
   .dsk-loc-bar .location-search-stack {
@@ -578,107 +333,38 @@
     line-height: 1.5;
   }
 
-  /* ── Settings slide panel — now a flex child inside desktop-left-panel ── */
-
-  .desktop-settings-slide {
-    display: none;
-    height: auto;
-    max-height: calc(100vh - 196px);
-    overflow-y: auto;
-    overflow-x: hidden;
-    pointer-events: auto;
-    background: rgba(11, 20, 30, 0.98);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(146, 176, 200, 0.14);
-    border-radius: 14px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
-    overscroll-behavior: contain;
-    scrollbar-width: none;
-  }
-
-  .desktop-settings-slide::-webkit-scrollbar {
-    display: none;
-  }
-
-  .desktop-settings-slide.is-open {
-    display: block;
-  }
-
-  /* Settings panel chrome reset inside the slide */
-  .desktop-settings-slide .settings-panel {
-    border: none;
-    border-radius: 0;
-    background: rgba(11, 20, 30, 0.98);
-    box-shadow: none;
-    min-width: unset;
-    width: 100%;
-  }
-
-  /* Hide accordion headers — desktop nav replaces them */
-  .desktop-settings-slide .accordion-header {
-    display: none;
-  }
-
-  /* Always show accordion content (no collapse on desktop) */
-  .desktop-settings-slide .accordion-body {
-    display: block !important;
-    grid-template-rows: none !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-    overflow: visible !important;
-    transition: none !important;
-  }
-
-  .desktop-settings-slide .accordion-body-inner {
-    overflow: visible;
-    min-height: auto;
-    padding: 14px;
-  }
-
-  .desktop-settings-slide .accordion-item {
-    border-bottom: 1px solid rgba(146, 176, 200, 0.1);
-    background: transparent;
-  }
-
-  .desktop-settings-slide .accordion-item:last-child {
-    border-bottom: none;
-  }
-
-  /* ── Location section hidden on desktop — replaced by floating bar ── */
-
-  .desktop-settings-slide .mobile-section--location {
-    display: none;
-  }
-
   /* ── Tab-driven section visibility (desktop sidebar) ── */
 
+  .sidebar-panel-container .mobile-section--location {
+    display: none;
+  }
+
   [data-desktop-tab="theme"]
-    .desktop-settings-slide
+    .sidebar-panel-container
     .mobile-section:not(.mobile-section--theme-settings) {
     display: none;
   }
 
   [data-desktop-tab="layout"]
-    .desktop-settings-slide
+    .sidebar-panel-container
     .mobile-section:not(.mobile-section--layout-settings) {
     display: none;
   }
 
   [data-desktop-tab="layers"]
-    .desktop-settings-slide
+    .sidebar-panel-container
     .mobile-section:not(.mobile-section--layers) {
     display: none;
   }
 
   [data-desktop-tab="markers"]
-    .desktop-settings-slide
+    .sidebar-panel-container
     .mobile-section:not(.mobile-section--markers) {
     display: none;
   }
 
   [data-desktop-tab="style"]
-    .desktop-settings-slide
+    .sidebar-panel-container
     .mobile-section:not(.mobile-section--style) {
     display: none;
   }

@@ -5,9 +5,8 @@ import {
   MAX_MARKER_SIZE,
   MIN_MARKER_SIZE,
 } from "@/features/markers/infrastructure/constants";
-import GeneralHeader from "@/shared/ui/GeneralHeader";
-import DesktopNavBar from "@/shared/ui/DesktopNavBar";
-import FooterNote from "@/shared/ui/FooterNote";
+import CommandBar from "@/shared/ui/CommandBar";
+import StudioSidebar from "@/shared/ui/StudioSidebar";
 import PreviewPanel from "@/features/poster/ui/PreviewPanel";
 import MobileNavBar, { type MobileTab } from "@/shared/ui/MobileNavBar";
 import InstallPrompt from "@/features/install/ui/InstallPrompt";
@@ -20,7 +19,6 @@ const SettingsPanel = lazy(() => import("@/features/poster/ui/SettingsPanel"));
 const AnnouncementModal = lazy(
   () => import("@/features/updates/ui/AnnouncementModal"),
 );
-const DesktopExportFab = lazy(() => import("@/features/export/ui/DesktopExportFab"));
 const MobileExportFab = lazy(() => import("@/features/export/ui/MobileExportFab"));
 const DesktopLocationBar = lazy(() => import("@/shared/ui/DesktopLocationBar"));
 
@@ -79,15 +77,16 @@ function AppShell() {
 
   // Desktop state
   const [desktopTab, setDesktopTab] = useState<MobileTab>("theme");
-  const [desktopPanelOpen, setDesktopPanelOpen] = useState(false);
   const [desktopLocationRowVisible, setDesktopLocationRowVisible] =
     useState(true);
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
   useEffect(() => {
     const preload = () => {
       void import("@/features/poster/ui/SettingsPanel");
       void import("@/shared/ui/DesktopLocationBar");
-      void import("@/features/export/ui/DesktopExportFab");
+
       void import("@/features/export/ui/MobileExportFab");
       void import("@/features/updates/ui/AnnouncementModal");
     };
@@ -97,8 +96,8 @@ function AppShell() {
       return () => window.cancelIdleCallback(idleId);
     }
 
-    const timer = window.setTimeout(preload, 300);
-    return () => window.clearTimeout(timer);
+    const timer = setTimeout(preload, 300);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -153,11 +152,9 @@ function AppShell() {
   };
 
   const handleDesktopTabChange = (tab: MobileTab) => {
-    if (tab === desktopTab && desktopPanelOpen) {
-      setDesktopPanelOpen(false);
-    } else {
-      setDesktopTab(tab);
-      setDesktopPanelOpen(true);
+    setDesktopTab(tab);
+    if (sidebarCollapsed) {
+      setSidebarCollapsed(false);
     }
   };
 
@@ -185,27 +182,27 @@ function AppShell() {
       data-mobile-tab={mobileTab}
       data-desktop-tab={desktopTab}
     >
-      <GeneralHeader onAboutOpen={() => setAboutOpen(true)} />
+      <CommandBar onAboutOpen={() => setAboutOpen(true)}>
+        <div className={`desktop-location-row-wrap${desktopLocationRowVisible ? "" : " is-hidden"}`}>
+          <Suspense fallback={null}>
+            <DesktopLocationBar />
+          </Suspense>
+        </div>
+      </CommandBar>
+
       <InstallPrompt />
       <StartupLocationModal />
 
-      <DesktopNavBar
+      <StudioSidebar
         activeTab={desktopTab}
-        panelOpen={desktopPanelOpen}
         onTabChange={handleDesktopTabChange}
-        isLocationVisible={desktopLocationRowVisible}
-        onLocationToggle={() =>
-          setDesktopLocationRowVisible((isVisible) => !isVisible)
-        }
-      />
-
-      <div
-        className={`desktop-location-row-wrap${desktopLocationRowVisible ? "" : " is-hidden"}`}
+        collapsed={sidebarCollapsed}
+        onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
       >
         <Suspense fallback={null}>
-          <DesktopLocationBar />
+          <SettingsPanel mobileTab={desktopTab} />
         </Suspense>
-      </div>
+      </StudioSidebar>
 
       <div
         className={`mobile-location-row-wrap${mobileLocationRowVisible ? "" : " is-hidden"}`}
@@ -240,15 +237,7 @@ function AppShell() {
         </div>
       ) : null}
 
-      <div className="desktop-left-panel">
-        <div
-          className={`desktop-settings-slide${desktopPanelOpen ? " is-open" : ""}`}
-        >
-          <Suspense fallback={null}>
-            <SettingsPanel />
-          </Suspense>
-        </div>
-      </div>
+
 
       <PreviewPanel />
 
@@ -284,14 +273,10 @@ function AppShell() {
         <MobileExportFab />
       </Suspense>
 
-      <FooterNote />
       <Suspense fallback={null}>
         <AnnouncementModal />
       </Suspense>
 
-      <Suspense fallback={null}>
-        <DesktopExportFab />
-      </Suspense>
       {aboutOpen ? (
         <Suspense fallback={null}>
           <AboutModal onClose={() => setAboutOpen(false)} />

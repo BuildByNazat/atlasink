@@ -40,3 +40,4 @@ export { FiChevronDown as ChevronDownIcon } from "react-icons/fi";
 export { FiX as CloseIcon } from "react-icons/fi";
 export { FiMonitor as MonitorIcon } from "react-icons/fi";
 export { FiSearch as SearchIcon } from "react-icons/fi";
+export { FiSidebar as SidebarIcon, FiChevronLeft as SidebarCollapseIcon, FiChevronRight as SidebarExpandIcon } from "react-icons/fi";

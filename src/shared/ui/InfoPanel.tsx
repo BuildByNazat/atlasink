@@ -185,11 +185,68 @@ function HelpUsGrowSection({
   );
 }
 
+function AttributionSection({
+  contactEmail,
+  legalNoticeUrl,
+  privacyUrl,
+}: {
+  contactEmail?: string;
+  legalNoticeUrl?: string;
+  privacyUrl?: string;
+}) {
+  const appVersion = String(import.meta.env.VITE_APP_VERSION ?? "0.0.0").trim();
+  const hasLegal = Boolean(contactEmail || legalNoticeUrl || privacyUrl);
+
+  return (
+    <section className="about-section attribution-section">
+      <h3 className="about-section-title">Credits & Legal</h3>
+      <div className="about-section-content">
+        <p className="attribution-text">
+          AtlasInk™ v{appVersion} | © 2026<br/>
+          Made with ❤︎ in Hannover, Germany
+        </p>
+
+        <p className="attribution-text">
+          <strong>Map Data:</strong> &copy;{" "}
+          <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">
+            OpenStreetMap contributors
+          </a>
+        </p>
+
+        <p className="attribution-text">
+          <strong>Tiles & Routing:</strong> &copy;{" "}
+          <a href="https://openmaptiles.org/" target="_blank" rel="noreferrer">OpenMapTiles</a>
+          {" | "}Powered by{" "}
+          <a href="https://openfreemap.org/" target="_blank" rel="noreferrer">OpenFreeMap</a>
+          {", "}
+          <a href="https://nominatim.openstreetmap.org/" target="_blank" rel="noreferrer">Nominatim</a>
+          {" & "}
+          <a href="https://maplibre.org/" target="_blank" rel="noreferrer">MapLibre</a>
+        </p>
+
+        {hasLegal ? (
+          <p className="attribution-text" style={{ marginTop: '12px' }}>
+            {contactEmail && <a href={`mailto:${contactEmail}`}>{contactEmail}</a>}
+            {contactEmail && (legalNoticeUrl || privacyUrl) && " | "}
+            {legalNoticeUrl && <a href={legalNoticeUrl} target="_blank" rel="noreferrer">Imprint</a>}
+            {legalNoticeUrl && privacyUrl && " | "}
+            {privacyUrl && <a href={privacyUrl} target="_blank" rel="noreferrer">Privacy Policy</a>}
+          </p>
+        ) : null}
+      </div>
+    </section>
+  );
+}
+
 /* ── main panel ── */
 
 export default function InfoPanel() {
   const repoUrl = String(REPO_URL ?? "").trim();
   const { repoStars, repoStarsLoading } = useRepoStars(REPO_API_URL);
+  
+  const contactEmail = String(CONTACT_EMAIL ?? "").trim();
+  const legalNoticeUrl = String(LEGAL_NOTICE_URL ?? "").trim();
+  const privacyUrl = String(PRIVACY_URL ?? "").trim();
 
   return (
     <aside className="info-panel">
@@ -198,6 +255,11 @@ export default function InfoPanel() {
           repoUrl={repoUrl}
           repoStars={repoStars}
           repoStarsLoading={repoStarsLoading}
+        />
+        <AttributionSection 
+          contactEmail={contactEmail}
+          legalNoticeUrl={legalNoticeUrl}
+          privacyUrl={privacyUrl}
         />
       </div>
     </aside>
