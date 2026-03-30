@@ -59,8 +59,7 @@ export default function SettingsPanel({
           <section className="shell-section shell-section--look">
             {!isColorEditorActive ? (
               <p className="shell-section__intro">
-                Pick the print language first. Theme, terrain, and layout belong
-                together in AtlasInk because they define the poster at a glance.
+                Theme, terrain, and layout define the look.
               </p>
             ) : null}
             <MapSettingsSection
@@ -82,12 +81,12 @@ export default function SettingsPanel({
             />
             {!isColorEditorActive ? (
               <div className="shell-subsection">
-                <div className="shell-subsection__header">
-                  <p className="shell-subsection__eyebrow">Terrain</p>
-                  <h3 className="shell-subsection__title">
-                    Decide what the map speaks with.
-                  </h3>
-                </div>
+              <div className="shell-subsection__header">
+                <p className="shell-subsection__eyebrow">Terrain</p>
+                <h3 className="shell-subsection__title">
+                  Choose which layers appear.
+                </h3>
+              </div>
                 <LayersSection
                   form={state.form}
                   onChange={handleChange}
@@ -104,9 +103,9 @@ export default function SettingsPanel({
           <section className="shell-section shell-section--details">
             <div className="shell-subsection">
               <div className="shell-subsection__header">
-                <p className="shell-subsection__eyebrow">Lettering</p>
+                <p className="shell-subsection__eyebrow">Text</p>
                 <h3 className="shell-subsection__title">
-                  Tune labels, credits, and the authored voice of the print.
+                  Adjust labels, credits, and type.
                 </h3>
               </div>
               <TypographySection
@@ -121,7 +120,7 @@ export default function SettingsPanel({
               <div className="shell-subsection__header">
                 <p className="shell-subsection__eyebrow">Memories</p>
                 <h3 className="shell-subsection__title">
-                  Add pins and refine the personal layer of the composition.
+                  Add and edit memory pins.
                 </h3>
               </div>
               <MarkersSection />

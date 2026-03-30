@@ -21,7 +21,7 @@ export default function CommandBar({ onAboutOpen, children }: CommandBarProps) {
           alt="AtlasInk logo"
         />
         <h1 className="command-bar-wordmark">AtlasInk</h1>
-        <p className="command-bar-kicker">Original map prints</p>
+        <p className="command-bar-kicker">Map print studio</p>
       </div>
 
       <div className="command-bar-center">{children}</div>
@@ -32,7 +32,7 @@ export default function CommandBar({ onAboutOpen, children }: CommandBarProps) {
           className="command-export-btn"
           disabled={state.isExporting}
           onClick={() => void handleDownloadPng()}
-          title="Export high-resolution PNG"
+          title="Export PNG"
         >
           {state.isExporting ? (
             <LoaderIcon className="command-export-btn-icon is-spinning" />
@@ -46,8 +46,8 @@ export default function CommandBar({ onAboutOpen, children }: CommandBarProps) {
           type="button"
           className="command-icon-btn"
           onClick={onAboutOpen}
-          aria-label="Studio Info"
-          title="Studio Info"
+          aria-label="About AtlasInk"
+          title="About AtlasInk"
         >
           <InfoIcon />
         </button>

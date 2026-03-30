@@ -122,7 +122,7 @@ export default function DesktopLocationBar() {
                 </li>
               ))}
               {isLocationSearching ? (
-                <li className="location-suggestion-status">Finding place...</li>
+                <li className="location-suggestion-status">Searching...</li>
               ) : null}
             </ul>
           ) : null}

@@ -20,21 +20,21 @@ const modes: {
     id: "place",
     label: "Place",
     title: "Place",
-    description: "Anchor the poster to a real location and precise coordinates.",
+    description: "Set the place and coordinates behind the print.",
     Icon: LocationIcon,
   },
   {
     id: "look",
     label: "Look",
     title: "Look",
-    description: "Shape the palette, terrain, and print proportions together.",
+    description: "Shape palette, terrain, and layout together.",
     Icon: ThemeIcon,
   },
   {
     id: "details",
     label: "Details",
     title: "Details",
-    description: "Refine typography, memories, and the final authored layer.",
+    description: "Tune text, memories, and finishing details.",
     Icon: StyleIcon,
   },
 ];
@@ -107,7 +107,7 @@ export default function StudioSidebar({
 
       <div className="sidebar-panel-container">
         <div className="sidebar-panel-head">
-          <p className="sidebar-panel-kicker">Original Map Print Studio</p>
+          <p className="sidebar-panel-kicker">AtlasInk Studio</p>
           <h2 className="sidebar-panel-title">{activeMeta.title}</h2>
           <p className="sidebar-panel-copy">{activeMeta.description}</p>
         </div>

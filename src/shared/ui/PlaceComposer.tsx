@@ -55,12 +55,12 @@ export default function PlaceComposer({ variant }: PlaceComposerProps) {
       {variant !== "masthead" ? (
         <header className="place-composer__header">
           <p className="place-composer__eyebrow">
-            {variant === "mobile" ? "Place" : "Current Place"}
+            Place
           </p>
           <h2 className="place-composer__title">
             {variant === "mobile"
-              ? "Set the location your print is built around."
-              : "Search, refine, or pin your map focus."}
+              ? "Set the place behind this print."
+              : "Search or pin the place."}
           </h2>
         </header>
       ) : null}
@@ -100,15 +100,15 @@ export default function PlaceComposer({ variant }: PlaceComposerProps) {
                   </button>
                 ) : null}
               </div>
-              <button
-                type="button"
-                className={`place-composer__icon-btn${isLocatingUser ? " is-locating" : ""}`}
-                onMouseDown={(event) => event.preventDefault()}
-                onClick={handleUseCurrentLocation}
-                disabled={isLocatingUser}
-                aria-label="Use my current place"
-                title="Use my current place"
-              >
+                <button
+                  type="button"
+                  className={`place-composer__icon-btn${isLocatingUser ? " is-locating" : ""}`}
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={handleUseCurrentLocation}
+                  disabled={isLocatingUser}
+                  aria-label="Use current place"
+                  title="Use current place"
+                >
                 <MyLocationIcon className="place-composer__locate-icon" />
               </button>
             </div>
@@ -130,7 +130,7 @@ export default function PlaceComposer({ variant }: PlaceComposerProps) {
                   </li>
                 ))}
                 {isLocationSearching ? (
-                  <li className="location-suggestion-status">Finding place...</li>
+                  <li className="location-suggestion-status">Searching...</li>
                 ) : null}
               </ul>
             ) : null}

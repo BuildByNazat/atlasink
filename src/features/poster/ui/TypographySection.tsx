@@ -34,11 +34,10 @@ function CreditsRemovalModal({
       >
         <div className="credits-modal-body">
           <p className="credits-modal-headline" id="credits-modal-title">
-            ✨ Wait! Did you know AtlasInk is a labor of love?
+            Keep AtlasInk visible?
           </p>
           <p className="credits-modal-text">
-            Keeping the brand visible helps more people find this studio and
-            allows me to keep it <strong>100% free</strong> and private.
+            It helps people find the studio and keeps the brand on the print.
           </p>
           <div className="credits-modal-actions">
             <button
@@ -97,9 +96,9 @@ export default function TypographySection({
         />
       )}
       <section className="panel-block">
-        <p className="section-summary-label">TYPOGRAPHY & CONTENT</p>
+        <p className="section-summary-label">Details</p>
         <label className="toggle-field">
-          <span>Canvas Labels</span>
+          <span>Labels</span>
           <span className="theme-switch">
             <input
               type="checkbox"
@@ -125,7 +124,7 @@ export default function TypographySection({
 
         <div className="field-grid keep-two-mobile">
           <label>
-            Place Title
+            Place name
             <input
               className="form-control-tall"
               name="displayCity"
@@ -135,7 +134,7 @@ export default function TypographySection({
             />
           </label>
           <label>
-            Region Label
+            Region
             <input
               className="form-control-tall"
               name="displayCountry"
@@ -165,7 +164,7 @@ export default function TypographySection({
         </label>
 
         <label className="toggle-field credits-toggle-field">
-          <span>Show AtlasInk Brand</span>
+          <span>Show brand</span>
           <span className="theme-switch">
             <input
               type="checkbox"
@@ -177,8 +176,7 @@ export default function TypographySection({
           </span>
         </label>
         <p className="credits-hint">
-          Keep this enabled to help others discover AtlasInk and support future
-          updates to the studio!
+          Keep this on to credit AtlasInk on the print.
         </p>
       </section>
     </>
